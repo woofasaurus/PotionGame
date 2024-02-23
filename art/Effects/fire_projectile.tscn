@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://xvhxplhasjwn"]
 
-[ext_resource type="Script" path="res://art/Effects/fire_projectile.gd" id="1_h0nx4"]
+[ext_resource type="Script" path="res://scripts/fire_projectile.gd" id="1_h0nx4"]
 [ext_resource type="Texture2D" uid="uid://cb0y2a6epr0hd" path="res://art/Effects/FireParticle.png" id="2_42vi6"]
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="3_78kcd"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pxxq1"]
 radius = 70.0071

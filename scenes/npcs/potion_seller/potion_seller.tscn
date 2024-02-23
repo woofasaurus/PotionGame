@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dxt3btryxey3g"]
 
-[ext_resource type="Script" path="res://npcs/potion_seller/potion_seller.gd" id="1_3ub81"]
+[ext_resource type="Script" path="res://scripts/potion_seller.gd" id="1_3ub81"]
 [ext_resource type="Texture2D" uid="uid://dike7drmpinak" path="res://art/PotionSellerAssets/PSShop.png" id="1_fpddg"]
 [ext_resource type="Texture2D" uid="uid://cc0mfcbgnersf" path="res://art/PotionSellerAssets/PSIdle.png" id="2_a8tvl"]
 [ext_resource type="Texture2D" uid="uid://dap1a1uqvwl3q" path="res://art/PotionSellerAssets/PSEgg.png" id="3_on7ch"]

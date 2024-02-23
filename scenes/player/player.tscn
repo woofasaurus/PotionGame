@@ -1,9 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://dwxi2ams24m26"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_viow5"]
-[ext_resource type="PackedScene" uid="uid://blccmlvssqoe7" path="res://projectiles/potion_projectile.tscn" id="2_8qpwi"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_viow5"]
+[ext_resource type="PackedScene" uid="uid://blccmlvssqoe7" path="res://scenes/projectiles/potion_projectile.tscn" id="2_8qpwi"]
 [ext_resource type="Texture2D" uid="uid://1seup3hfk5co" path="res://art/MCAssets/FullSheet.png" id="6_jbg3w"]
 [ext_resource type="Texture2D" uid="uid://cjpom10gseslg" path="res://art/MCAssets/FullSheetNormals.png" id="7_ubt1b"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53hkq"]
 radius = 13.4733

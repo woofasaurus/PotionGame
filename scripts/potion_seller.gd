@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var num_arm_animations = 4
-var for_sale_scene = preload("res://npcs/potion_seller/for_sale.tscn")
+var for_sale_scene = preload("res://scenes/npcs/potion_seller/for_sale.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbrrlt2n421m"]
 
 [ext_resource type="Texture2D" uid="uid://fi0ubug37m3f" path="res://art/Effects/SlashAnimation.png" id="1_0c846"]
-[ext_resource type="Script" path="res://projectiles/slash.gd" id="1_2fgcn"]
+[ext_resource type="Script" path="res://scripts/slash.gd" id="1_j5sox"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsq67"]
 radius = 11.3608
@@ -36,7 +36,7 @@ animations = [{
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 2
-script = ExtResource("1_2fgcn")
+script = ExtResource("1_j5sox")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

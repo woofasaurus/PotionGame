@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://owhuivophvh8"]
 
-[ext_resource type="Script" path="res://popup_text.gd" id="1_32pk1"]
+[ext_resource type="Script" path="res://scripts/popup_text.gd" id="1_32pk1"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="1_s8kb7"]
+
 
 [node name="PopupText" type="Node2D"]
 z_index = 10

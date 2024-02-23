@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c45vcfgd75wj4"]
 
-[ext_resource type="Script" path="res://HUD.gd" id="1_vnduc"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_vnduc"]
 [ext_resource type="Texture2D" uid="uid://dm05u00137q18" path="res://art/WhiteVignette.png" id="2_4xbmj"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="2_pr86w"]
+
 
 [sub_resource type="InputEventAction" id="InputEventAction_nwvch"]
 action = &"start_game"

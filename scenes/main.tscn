@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://ccenq1pij3i58"]
 
-[ext_resource type="PackedScene" uid="uid://dwxi2ams24m26" path="res://player/player.tscn" id="1_iyqj2"]
-[ext_resource type="Script" path="res://main.gd" id="1_p8v7w"]
-[ext_resource type="PackedScene" uid="uid://nfkkv7eqak1r" path="res://enemies/mob.tscn" id="2_uel58"]
-[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://hud.tscn" id="4_8w8u7"]
+[ext_resource type="PackedScene" uid="uid://dwxi2ams24m26" path="res://scenes/player/player.tscn" id="1_iyqj2"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_p8v7w"]
+[ext_resource type="PackedScene" uid="uid://nfkkv7eqak1r" path="res://scenes/enemies/mob.tscn" id="2_uel58"]
+[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud.tscn" id="4_8w8u7"]
 [ext_resource type="Texture2D" uid="uid://caprmfdyskypl" path="res://art/MCAssets/PotionGameBackround.png" id="4_pfpml"]
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="6_ak4ja"]
-[ext_resource type="PackedScene" uid="uid://c2tivcm0eioqb" path="res://loot.tscn" id="7_4kajd"]
-[ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://terrain/torch.tscn" id="9_qn2pj"]
-[ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]
-[ext_resource type="PackedScene" uid="uid://bpfj3nqdwx1y2" path="res://rooms/basic_room.tscn" id="11_lts5b"]
+[ext_resource type="PackedScene" uid="uid://c2tivcm0eioqb" path="res://scenes/loot.tscn" id="7_4kajd"]
+[ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://scenes/terrain/torch.tscn" id="9_qn2pj"]
+[ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]
+[ext_resource type="PackedScene" uid="uid://bpfj3nqdwx1y2" path="res://scenes/rooms/basic_room.tscn" id="11_lts5b"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_p8v7w")
