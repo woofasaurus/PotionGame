@@ -5,7 +5,7 @@ signal cash_update
 signal inventory_update
 signal select_update
 
-@export var potion_scene: PackedScene
+var potion_scene = preload("res://scenes/projectiles/potion_projectile.tscn")
 var metabolizing = []
 #Character stats
 @export var speed = 400

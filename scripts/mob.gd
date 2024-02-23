@@ -1,7 +1,7 @@
 extends CharacterBody2D
 signal dead
 
-@export var slash_scene: PackedScene
+var slash_scene = preload("res://scenes/projectiles/slash.tscn")
 
 @export var speed = 250;
 @export var health = 100;

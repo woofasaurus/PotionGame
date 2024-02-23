@@ -1,8 +1,8 @@
 extends Node
 
-@export var player_scene: PackedScene
-@export var mob_scene: PackedScene
-@export var loot_scene: PackedScene
+var player_scene = preload("res://scenes/player/player.tscn")
+var mob_scene = preload("res://scenes/enemies/mob.tscn")
+var loot_scene = preload("res://scenes/loot.tscn")
 
 var goblin_count = 0
 var wave_size = 1

@@ -1,5 +1,5 @@
 extends Node2D
-var fire_projectile_scene = preload("res://art/Effects/fire_projectile.tscn") 
+var fire_projectile_scene = preload("res://scenes/effect_scenes/fire_projectile.tscn") 
 
 func _ready():
 	$SpawnFire.start()

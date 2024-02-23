@@ -35,7 +35,7 @@ func random_animation(_arm):
 		3:
 			_arm.queue("Pixie")
 
-func _on_arm_animation_1_animation_changed(old_name, new_name):
+func _on_arm_animation_1_animation_changed(_old_name, new_name):
 	if (new_name == $ArmAnimation2.get_current_animation()):
 		random_animation($ArmAnimation1)
 		$ArmAnimation1.play($ArmAnimation1.get_queue()[0])
@@ -43,7 +43,7 @@ func _on_arm_animation_1_animation_changed(old_name, new_name):
 	random_animation($ArmAnimation1)
 
 
-func _on_arm_animation_2_animation_changed(old_name, new_name):
+func _on_arm_animation_2_animation_changed(_old_name, new_name):
 	if (new_name == $ArmAnimation1.get_current_animation()):
 		random_animation($ArmAnimation2)
 		print($ArmAnimation2.get_queue())

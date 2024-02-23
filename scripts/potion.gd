@@ -16,7 +16,7 @@ func effect(_player):
 			_player.health += 1
 			_player.health_update.emit(_player.health)
 		4: 
-			var fire_breath = preload("res://art/Effects/fire_breath.tscn").instantiate()
+			var fire_breath = preload("res://scenes/effect_scenes/fire_breath.tscn").instantiate()
 			fire_breath.position = _player.get_node("Head").position
 			_player.add_child(fire_breath)
 		5: 

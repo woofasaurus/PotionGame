@@ -3,7 +3,7 @@ var potion_reference
 var direction
 var velocity
 var spin
-var potion_splat_scene = preload("res://art/Effects/potion_splat.tscn")
+var potion_splat_scene = preload("res://scenes/effect_scenes/potion_splat.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
