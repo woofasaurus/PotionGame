@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://bclw4445vsqtf"]
+
+[ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="1_36gtx"]
+[ext_resource type="Texture2D" uid="uid://1seup3hfk5co" path="res://art/MCAssets/FullSheet.png" id="2_d5m7a"]
+[ext_resource type="Texture2D" uid="uid://cjpom10gseslg" path="res://art/MCAssets/FullSheetNormals.png" id="3_nj383"]
+[ext_resource type="Texture2D" uid="uid://cb0y2a6epr0hd" path="res://art/Effects/FireParticle.png" id="4_fnrgw"]
+[ext_resource type="Texture2D" uid="uid://clpds2d8dsang" path="res://art/Effects/FireParticleNormal.png" id="5_1byf0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mibdn"]
+diffuse_texture = ExtResource("2_d5m7a")
+normal_texture = ExtResource("3_nj383")
+
+[sub_resource type="Animation" id="Animation_q8mhw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lhkpv"]
+resource_name = "dodge"
+length = 0.833342
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 15, 16, 17, 18, 19, 20, 20, 20]
+}
+
+[sub_resource type="Animation" id="Animation_rho7f"]
+resource_name = "idle"
+length = 1.00002
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_r7glu"]
+resource_name = "walk"
+length = 1.33335
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o38oo"]
+_data = {
+"RESET": SubResource("Animation_q8mhw"),
+"dodge": SubResource("Animation_lhkpv"),
+"idle": SubResource("Animation_rho7f"),
+"walk": SubResource("Animation_r7glu")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cm350"]
+diffuse_texture = ExtResource("4_fnrgw")
+normal_texture = ExtResource("5_1byf0")
+specular_color = Color(0, 0, 0, 1)
+specular_shininess = 0.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-415, 32)
+scale = Vector2(10, 10)
+texture = ExtResource("1_36gtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-15, -260)
+texture = SubResource("CanvasTexture_mibdn")
+hframes = 6
+vframes = 4
+frame = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o38oo")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_cm350")

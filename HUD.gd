@@ -1,0 +1,51 @@
+extends CanvasLayer
+
+signal start_game
+
+func show_message(text):
+	$Message.text = text
+	$Message.show()
+	$MessageTimer.start()
+
+func _process(delta):
+	if $"/root/Global".player != null:
+		var thirst_level = ($"/root/Global".player.thirst/$"/root/Global".player.max_thirst)
+		$ScreenThirst.set_modulate(Color(1, 1, 0.5, (1 - thirst_level)*0.5))
+
+func show_game_over():
+	show_message("Game Over!")
+	await $MessageTimer.timeout
+	
+	$Message.text = "AGANE AGANE!"
+	$Message.show()
+	
+	await get_tree().create_timer(0.5).timeout
+	$StartButton.show()
+
+func update_health(health):
+	$ScoreLabel.text = str(health)
+
+func update_goblin_count(goblins):
+	$GoblinCount.text = str(goblins)
+
+func update_cash(cash):
+	$Cash.text = str(cash)
+
+func update_inventory(inventory):
+	$Inventory.text = ""
+	for i in inventory:
+		$Inventory.text += i.name + ", "
+
+func update_selection(selection): #called by select_update signal emitted by player, connected in main
+	if selection == null:
+		$InventorySelection.text = "nothing"
+	else:
+		$InventorySelection.text = selection.name
+
+func _on_start_button_pressed():
+	$StartButton.hide()
+	update_health(400)
+	start_game.emit()
+
+func _on_message_timer_timeout():
+	$Message.hide()

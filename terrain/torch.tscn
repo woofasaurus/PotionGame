@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbnb8g53jt1xu"]
+
+[ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="1_1bskg"]
+[ext_resource type="Texture2D" uid="uid://c8px0m1u3im2r" path="res://art/enemySwimming_1.png" id="2_jkysh"]
+
+[node name="Torch" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.333333, 0, 1)
+energy = 0.5
+texture = ExtResource("1_1bskg")
+texture_scale = 12.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_jkysh")

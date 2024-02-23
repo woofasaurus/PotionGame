@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca8g03up60i5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8k73"]
+
+[node name="Wall" type="StaticBody2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f8k73")
+
+[node name="WallArea" type="Area2D" parent="."]
+
+[node name="WallAreaShape" type="CollisionShape2D" parent="WallArea"]
+shape = SubResource("RectangleShape2D_f8k73")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://cnwjwqkf0cyv4"]
+
+[ext_resource type="Script" path="res://potions/potion.gd" id="1_fj4yk"]
+[ext_resource type="Texture2D" uid="uid://cyjntocxjqdp0" path="res://art/PotionSprites/Potions0004.png" id="2_a31l7"]
+
+[resource]
+script = ExtResource("1_fj4yk")
+name = "Water"
+rarity = "mundane"
+id = 3
+texture = ExtResource("2_a31l7")
+color = Color(0.560784, 0.870588, 0.878431, 0.0392157)

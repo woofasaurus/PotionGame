@@ -1,0 +1,245 @@
+[gd_scene load_steps=18 format=3 uid="uid://dxt3btryxey3g"]
+
+[ext_resource type="Script" path="res://npcs/potion_seller/potion_seller.gd" id="1_3ub81"]
+[ext_resource type="Texture2D" uid="uid://dike7drmpinak" path="res://art/PotionSellerAssets/PSShop.png" id="1_fpddg"]
+[ext_resource type="Texture2D" uid="uid://cc0mfcbgnersf" path="res://art/PotionSellerAssets/PSIdle.png" id="2_a8tvl"]
+[ext_resource type="Texture2D" uid="uid://dap1a1uqvwl3q" path="res://art/PotionSellerAssets/PSEgg.png" id="3_on7ch"]
+[ext_resource type="Texture2D" uid="uid://cyc0co8euub85" path="res://art/PotionSellerAssets/PSScratch.png" id="4_smvt3"]
+[ext_resource type="Texture2D" uid="uid://ccm7alv4vdmer" path="res://art/PotionSellerAssets/PSSalt.png" id="5_qqbet"]
+[ext_resource type="Texture2D" uid="uid://b0lav7lrtoxmy" path="res://art/PotionSellerAssets/PSPixie.png" id="6_4dj01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp8bb"]
+size = Vector2(1296, 328)
+
+[sub_resource type="Animation" id="Animation_etsny"]
+resource_name = "Idle"
+length = 0.666683
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ssovf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2nvt7"]
+_data = {
+"Idle": SubResource("Animation_etsny"),
+"RESET": SubResource("Animation_ssovf")
+}
+
+[sub_resource type="Animation" id="Animation_6hkis"]
+resource_name = "Egg"
+length = 2.66668
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/ArmEgg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5, 1.66667, 1.83333, 2, 2.16667, 2.33333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_sswwn"]
+resource_name = "Pixie"
+length = 2.00002
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/ArmPixie:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5, 1.66667, 1.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_xwri4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/ArmScratch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/ArmSalt:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Art/ArmPixie:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Art/ArmEgg:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x7adb"]
+resource_name = "Salt"
+length = 2.33335
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/ArmSalt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5, 1.66667, 1.83333, 2, 2.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_1g48y"]
+resource_name = "Scratch"
+length = 2.00002
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/ArmScratch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5, 1.66667, 1.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5rtw"]
+_data = {
+"Egg": SubResource("Animation_6hkis"),
+"Pixie": SubResource("Animation_sswwn"),
+"RESET": SubResource("Animation_xwri4"),
+"Salt": SubResource("Animation_x7adb"),
+"Scratch": SubResource("Animation_1g48y")
+}
+
+[node name="PotionSeller" type="StaticBody2D"]
+script = ExtResource("1_3ub81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -164)
+shape = SubResource("RectangleShape2D_pp8bb")
+
+[node name="IdleAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2nvt7")
+}
+
+[node name="ArmAnimation1" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p5rtw")
+}
+
+[node name="ArmAnimation2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p5rtw")
+}
+
+[node name="Art" type="Node2D" parent="."]
+position = Vector2(0, -650)
+
+[node name="Shop" type="Sprite2D" parent="Art"]
+texture = ExtResource("1_fpddg")
+
+[node name="Idle" type="Sprite2D" parent="Art"]
+texture = ExtResource("2_a8tvl")
+hframes = 2
+vframes = 2
+
+[node name="ArmEgg" type="Sprite2D" parent="Art"]
+texture = ExtResource("3_on7ch")
+hframes = 4
+vframes = 4
+
+[node name="ArmScratch" type="Sprite2D" parent="Art"]
+texture = ExtResource("4_smvt3")
+hframes = 4
+vframes = 3
+
+[node name="ArmSalt" type="Sprite2D" parent="Art"]
+texture = ExtResource("5_qqbet")
+hframes = 4
+vframes = 4
+
+[node name="ArmPixie" type="Sprite2D" parent="Art"]
+texture = ExtResource("6_4dj01")
+hframes = 4
+vframes = 3
+
+[node name="Potion1" type="Marker2D" parent="."]
+position = Vector2(-200, -200)
+
+[node name="Potion2" type="Marker2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="Potion3" type="Marker2D" parent="."]
+position = Vector2(200, -200)
+
+[connection signal="animation_changed" from="ArmAnimation1" to="." method="_on_arm_animation_1_animation_changed"]
+[connection signal="animation_changed" from="ArmAnimation2" to="." method="_on_arm_animation_2_animation_changed"]

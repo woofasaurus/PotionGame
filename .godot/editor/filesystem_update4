@@ -1,0 +1,6 @@
+res://main.tscn
+res://npcs/potion_seller/potion_seller.tscn
+res://slash.tscn
+res://projectiles/slash.tscn
+res://npcs/potion_seller/for_sale.tscn
+res://npcs/potion_seller/potion_seller.gd
