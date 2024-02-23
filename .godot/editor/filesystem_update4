@@ -16,3 +16,4 @@ res://scripts/player.gd
 res://scripts/popup_text.gd
 res://scripts/potion_splat.gd
 res://scripts/slash.gd
+res://scripts/main.gd
