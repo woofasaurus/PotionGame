@@ -26,6 +26,7 @@ func new_game(): #Called by start button
 	$HUD.update_inventory(player.inventory)
 	$HUD.update_selection(player.inventory[player.inventory_index])
 	$SortingLayer.add_child(player)
+	print($"/root/Global".get_loot("common", "wo"))
 	
 	goblin_count = 0
 	wave_size = 1
@@ -46,18 +47,22 @@ func spawn_goblins(number):
 func decrement_goblin_count(_position, _rarity):
 	if $"/root/Global".loot_count < $"/root/Global".max_loot:
 		var droproll = randi() % 100
-		print("roll: " + str(droproll))
 		if droproll < 75:
 			var loot = loot_scene.instantiate()
 			loot.global_position = _position
-			loot.set_loot(_rarity)
 			$SortingLayer.add_child(loot)
+			loot.set_loot(_rarity)
 			$"/root/Global".loot_count += 1
 		var gold = loot_scene.instantiate()
 		gold.set_loot("gold")
 		gold.global_position = _position - Vector2(randi()%50 - 25, randi() % 25 + 10)
 		$SortingLayer.add_child(gold)
 		$"/root/Global".loot_count += 1
+		
+		var chest = $"/root/Global".chest_reference.instantiate()
+		chest.global_position = _position
+		$SortingLayer.add_child(chest)
+		
 	goblin_count -= 1
 	if goblin_count == 0:
 		spawn_goblins(wave_size)

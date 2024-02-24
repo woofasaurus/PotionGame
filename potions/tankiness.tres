@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://cigmcti3ocukt"]
+
+[ext_resource type="Script" path="res://potions/potion.gd" id="1_ig8kf"]
+[ext_resource type="Texture2D" uid="uid://b4ldgbghaui8e" path="res://art/PotionSprites/Potions0009.png" id="2_j45yk"]
+
+[resource]
+script = ExtResource("1_ig8kf")
+name = "Potion of Tankiness"
+rarity = "Legendary"
+description = "Increases max hp, but lowers movespeed."
+satiation = 10
+texture = ExtResource("2_j45yk")
+color = Color(0.14902, 0.219608, 0.831373, 0.54902)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbnb8g53jt1xu"]
 
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="1_1bskg"]
-[ext_resource type="Texture2D" uid="uid://c8px0m1u3im2r" path="res://art/enemySwimming_1.png" id="2_jkysh"]
+[ext_resource type="Texture2D" uid="uid://c8px0m1u3im2r" path="res://art/Placeholder/enemySwimming_1.png" id="2_jkysh"]
 
 [node name="Torch" type="Node2D"]
 

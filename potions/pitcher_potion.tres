@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://4p5g3gpt0fa3"]
+
+[ext_resource type="Script" path="res://potions/potion.gd" id="1_ev06n"]
+[ext_resource type="Texture2D" uid="uid://c46n3l1birtp6" path="res://art/PotionSprites/Potions0011.png" id="2_lytpc"]
+
+[resource]
+script = ExtResource("1_ev06n")
+name = "Pitcher Potion"
+rarity = "Legendary"
+description = "Increases throw speed significantly."
+satiation = 10
+texture = ExtResource("2_lytpc")
+color = Color(0.980392, 1, 0, 0.392157)

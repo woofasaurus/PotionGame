@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://blgk6dxeprn0c"]
+
+[ext_resource type="Script" path="res://potions/potion.gd" id="1_rql6r"]
+[ext_resource type="Texture2D" uid="uid://cdr5ug5wqaevc" path="res://art/PotionSprites/Potions0008.png" id="2_1pl32"]
+
+[resource]
+script = ExtResource("1_rql6r")
+name = "Swiftness Potion"
+rarity = "legendary"
+description = "Permanently increases movespeed. "
+satiation = 10
+texture = ExtResource("2_1pl32")
+color = Color(1, 1, 1, 0.392157)
