@@ -16,7 +16,7 @@ var rare_array = [preload("res://potions/water.tres")]
 
 var epic_array = [preload("res://potions/water.tres")]
 
-var legendary_array = [preload("res://potions/pitcher_potion.tres"), preload("res://potions/tankiness.tres"), preload("res://potions/swiftness_potion.tres")]
+var legendary_array = [preload("res://potions/pitching_potion.tres"), preload("res://potions/tankiness.tres"), preload("res://potions/swiftness_potion.tres")]
 
 var unique_array = [preload("res://potions/water.tres")]
 #endregion

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://cigmcti3ocukt"]
 
-[ext_resource type="Script" path="res://potions/potion.gd" id="1_ig8kf"]
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_ig8kf"]
 [ext_resource type="Texture2D" uid="uid://b4ldgbghaui8e" path="res://art/PotionSprites/Potions0009.png" id="2_j45yk"]
 
 [resource]

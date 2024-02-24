@@ -1,13 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2tivcm0eioqb"]
 
-<<<<<<<< HEAD:scenes/loot.tscn
-[ext_resource type="Script" path="res://scripts/loot.gd" id="1_5iibg"]
-[ext_resource type="Texture2D" uid="uid://c57r3u6x83khg" path="res://art/Gold.png" id="2_4nkn0"]
-========
 [ext_resource type="Script" path="res://loot/loot.gd" id="1_5iibg"]
 [ext_resource type="Texture2D" uid="uid://c57r3u6x83khg" path="res://art/Placeholder/Gold.png" id="2_w1gel"]
->>>>>>>> origin/chest:loot/loot.tscn
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mn8cj"]
 radius = 32.0
