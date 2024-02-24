@@ -14,7 +14,7 @@ func _ready():
 	$CollisionShape2D.disabled = false
 	$AnimatedSprite2D.play()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if health <= 0:
 		dead.emit(position, "common")
 		
