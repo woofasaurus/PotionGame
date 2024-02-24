@@ -1,8 +1,11 @@
 extends Node2D
 
-@export var entrance_height: int = 4
-@export var exit_height: int = 4
-@export var room_width: int = 4
+## The tilemap y-coordinate of the first tile of the entrance.
+@export var entrance_height: int
+## The tilemap y-coordinate of the first tile of the exit.
+@export var exit_height: int 
+## The the tilemap width of the room from entrance to exit.
+@export var room_width: int 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

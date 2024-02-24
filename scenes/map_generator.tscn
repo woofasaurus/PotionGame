@@ -7,10 +7,10 @@
 [node name="MapGenerator" type="Node2D"]
 script = ExtResource("1_ku30c")
 
-[node name="Camera2D" parent="." instance=ExtResource("2_yqvvg")]
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(99.0001, -310)
 scale = Vector2(8.38, 8.38)
 tile_set = ExtResource("3_33036")
 format = 2
+
+[node name="Camera2D" parent="." instance=ExtResource("2_yqvvg")]

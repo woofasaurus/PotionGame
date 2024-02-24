@@ -954,7 +954,9 @@ pattern_1 = SubResource("TileMapPattern_83308")
 
 [node name="room_010" type="Node2D"]
 script = ExtResource("1_2tb4h")
-entrance_height = 14
+entrance_height = 4
+exit_height = 19
+room_width = 25
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(8.38, 8.38)

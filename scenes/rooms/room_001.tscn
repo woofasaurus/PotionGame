@@ -946,6 +946,9 @@ sources/0 = SubResource("TileSetAtlasSource_yqxvb")
 
 [node name="room_001" type="Node2D"]
 script = ExtResource("1_jmooe")
+entrance_height = 4
+exit_height = 21
+room_width = 28
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(8.38, 8.38)

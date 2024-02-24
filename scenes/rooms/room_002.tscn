@@ -5,7 +5,9 @@
 
 [node name="room_002" type="Node2D"]
 script = ExtResource("1_8msod")
-exit_height = 10
+entrance_height = 19
+exit_height = 19
+room_width = 35
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(8.38, 8.38)

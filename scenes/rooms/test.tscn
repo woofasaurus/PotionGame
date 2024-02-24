@@ -6,6 +6,9 @@
 [node name="Test" type="Node2D"]
 
 [node name="room_2" parent="." instance=ExtResource("1_6nylk")]
-position = Vector2(4414, -141)
+position = Vector2(3934, 0)
 
 [node name="room_001" parent="." instance=ExtResource("2_o28oi")]
+
+[editable path="room_2"]
+[editable path="room_001"]
