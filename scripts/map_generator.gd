@@ -55,7 +55,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int):
 		var rand_index = index_pool.pick_random()
 
 		room_instance = self.room_pool[rand_index].instantiate()
-		print(room_instance.entrance_height, " ", room_instance.exit_height)
+		# print(room_instance.entrance_height, " ", room_instance.exit_height)
 		var tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
 
 		if last_index != -1:
@@ -77,6 +77,37 @@ func _ready():
 	self._generate_rooms(range(11), 50)
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+class Queue:
+	var queue_array: Array = Array()
+	## The maximum number of items that the queue will hold.
+	var capacity: int
+
+	func _init(cap):
+		self.capacity = cap
+
+	func push(item):
+		if len(self.queue_array) < self.capacity:
+			self.queue_array.append(item)
+			return 1
+		else:
+			return 0
+
+	func peek():
+		return self.queue_array.front()
+	
+	func is_full():
+		return len(self.queue_array) == self.capacity
+
+	func is_empty():
+		return self.queue_array.is_empty()
+
+	func dequeue():
+		return self.queue_array.pop_front()
+
+	func get_length():
+		return len(self.queue_array)

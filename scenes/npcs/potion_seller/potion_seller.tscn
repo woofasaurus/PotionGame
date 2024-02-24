@@ -179,6 +179,7 @@ _data = {
 }
 
 [node name="PotionSeller" type="StaticBody2D"]
+position = Vector2(813, 1054)
 script = ExtResource("1_3ub81")
 metadata/_edit_group_ = true
 
