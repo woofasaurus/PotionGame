@@ -31,16 +31,16 @@ func update_goblin_count(goblins):
 func update_cash(cash):
 	$Cash.text = str(cash)
 
-func update_inventory(inventory):
+func update_inventory(inventory, selection): #called by inventory_update signal emitted by player, connected in main
+	if (selection >= 0 and selection < inventory.size()):
+		$InventorySelection.text = inventory[selection].name
+		$InventorySelection/InventoryWheel.update(inventory, selection)
+	else:
+		$InventorySelection.text = "empty"
+	
 	$Inventory.text = ""
 	for i in inventory:
 		$Inventory.text += i.name + ", "
-
-func update_selection(selection): #called by select_update signal emitted by player, connected in main
-	if selection == null:
-		$InventorySelection.text = "nothing"
-	else:
-		$InventorySelection.text = selection.name
 
 func _on_start_button_pressed():
 	$StartButton.hide()

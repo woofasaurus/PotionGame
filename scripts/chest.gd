@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var legendary_select_scene = preload("res://scenes/legendary_select.tscn")
-var popup_scene = preload("res://scenes/popup_text.tscn")
+var popup_scene = preload("res://scenes/hud/popup_text.tscn")
 var in_range = false
 var open = false
 var used = false
@@ -19,7 +19,6 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("interact") and in_range and not open:
-		var player = $"/root/Global".player
 		$AnimationPlayer.play("open")
 		open = true
 		options.show()

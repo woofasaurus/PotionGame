@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/chest.gd" id="1_awm0b"]
 [ext_resource type="Texture2D" uid="uid://bs20jka0a2cm6" path="res://art/Placeholder/PlaceholderChest.png" id="1_ye4xf"]
-[ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/popup_text.tscn" id="3_6431b"]
+[ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/hud/popup_text.tscn" id="3_gejh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg33x"]
 size = Vector2(252, 133)
@@ -50,6 +50,8 @@ size = Vector2(389, 277)
 
 [node name="Chest" type="StaticBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 128
+collision_mask = 0
 script = ExtResource("1_awm0b")
 metadata/_edit_group_ = true
 
@@ -75,7 +77,7 @@ collision_mask = 2
 position = Vector2(-12.5, -64.5)
 shape = SubResource("RectangleShape2D_4jt5f")
 
-[node name="PopupText" parent="." instance=ExtResource("3_6431b")]
+[node name="PopupText" parent="." instance=ExtResource("3_gejh4")]
 position = Vector2(0, -315)
 
 [connection signal="area_entered" from="InteractZone" to="." method="_on_interact_zone_area_entered"]

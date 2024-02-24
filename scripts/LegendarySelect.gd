@@ -18,18 +18,27 @@ func set_variables():
 	$Option3.icon = potion3.texture
 
 func _on_option_1_pressed():
+	player = $"/root/Global".player
+	player.aiming = false
+	player.get_node("PotionThrowOrigin").hide()
 	player.inventory.append(potion1)
 	player.inventory_update.emit(player.inventory)
 	free.emit()
 	queue_free()
 
 func _on_option_2_pressed():
+	player = $"/root/Global".player
+	player.aiming = false
+	player.get_node("PotionThrowOrigin").hide()
 	player.inventory.append(potion2)
 	player.inventory_update.emit(player.inventory)
 	free.emit()
 	queue_free()
 
 func _on_option_3_pressed():
+	player = $"/root/Global".player
+	player.aiming = false
+	player.get_node("PotionThrowOrigin").hide()
 	player.inventory.append(potion3)
 	player.inventory_update.emit(player.inventory)
 	free.emit()
