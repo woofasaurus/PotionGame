@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://rb2iki5gjcch"]
+
+[ext_resource type="Script" path="res://scripts/creative_camera.gd" id="1_1fgh2"]
+
+[node name="CreativeCam" type="Camera2D"]
+script = ExtResource("1_1fgh2")
+
+[node name="ZoomLabel" type="Label" parent="."]
+offset_left = -951.0
+offset_top = -513.0
+offset_right = -685.0
+offset_bottom = -444.0
+theme_override_font_sizes/font_size = 50
+
+[node name="MousePositionLabel" type="Label" parent="."]
+offset_left = 370.0
+offset_top = -513.0
+offset_right = 989.0
+offset_bottom = -444.0
+theme_override_font_sizes/font_size = 50
