@@ -18,64 +18,48 @@ func _preload_rooms(num_rooms, str_length):
 		# Load must be used for dynamic paths or whatevrr
 		self.room_pool.append(load(new_path))
 
-func _generate_room(room_num):
-	var room = room_pool[room_num - 1]
-	var room_instance = room.instantiate()
-	var tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
-	
-	for tile_pos in tile_coords:
-		var atlas_coords = room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
-		self.floor_map.set_cell(0, tile_pos, 0, atlas_coords)
-
-func _generate_room_two(room_num):
-	var room = room_pool[room_num - 1]
-	var room_instance = room.instantiate()
-	var tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
-	
-	for tile_pos in tile_coords:
-		var atlas_coords = room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
-		var new_pos = tile_pos + Vector2i(33, -1)
-
-		self.floor_map.set_cell(0, new_pos, 0, atlas_coords)
-
 # Pool range is an array of the room numbers you want to include in the pool. num_rooms is how many rooms you wan tot generate.
-func _generate_rooms(pool_range: Array, num_rooms: int):
+func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int):
 	var coord_offset = Vector2i(0, 0) # The x and y offset that all of the generated rooms have accumulated.
-	var last_index = -1 # Intialized at -1, just means that it's the first go.
-	var second_last_index = -2
+	var my_queue = Queue.new(max_consecutive)
 	var room_instance = self.room_pool[0].instantiate() # Just here so that the if condition can execute and doesn't give errors.
 	
 	for i in range(num_rooms):
 		var index_pool = pool_range.duplicate()
 		
-		if last_index != -1:
-			index_pool.erase(last_index)
-			if second_last_index > -1:
-				index_pool.erase(second_last_index)
+		# Removes all of the consecutive rooms in the pool that are also in the queue
+		if not my_queue.is_empty():
+			for index in my_queue.iterable():
+				if index in index_pool:
+					index_pool.erase(index)
+
 		var rand_index = index_pool.pick_random()
 
 		room_instance = self.room_pool[rand_index].instantiate()
-		# print(room_instance.entrance_height, " ", room_instance.exit_height)
 		var tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
 
-		if last_index != -1:
+		# Adds the offset
+		if not my_queue.is_empty():
 			coord_offset += Vector2i(0, -room_instance.entrance_height)
-
+			
+		# Sets all of the tiles in the tile map
 		for tile_pos in tile_coords:
 			var atlas_coords = room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
 			var new_pos = tile_pos + coord_offset
 
 			self.floor_map.set_cell(0, new_pos, 0, atlas_coords)
 
+		# Computes the offset 
 		coord_offset += Vector2i(room_instance.room_width + 1, room_instance.exit_height)
-		second_last_index = last_index
-		last_index = rand_index
+		
+		if my_queue.is_full():
+			my_queue.dequeue()
+		my_queue.push(rand_index)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self._preload_rooms(11, 3)
-	self._generate_rooms(range(11), 50)
-
+	self._generate_rooms(range(11), 50, 3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -88,7 +72,11 @@ class Queue:
 	var capacity: int
 
 	func _init(cap):
-		self.capacity = cap
+		if cap > 0:
+			self.capacity = cap
+		else:
+			self.capacity = int(INF) # 0 or negative means there is not capacity.
+			
 
 	func push(item):
 		if len(self.queue_array) < self.capacity:
@@ -96,6 +84,9 @@ class Queue:
 			return 1
 		else:
 			return 0
+
+	func has(item):
+		return item in queue_array
 
 	func peek():
 		return self.queue_array.front()
@@ -111,3 +102,6 @@ class Queue:
 
 	func get_length():
 		return len(self.queue_array)
+	
+	func iterable():
+		return self.queue_array.duplicate()
