@@ -26,7 +26,6 @@ func new_game(): #Called by start button
 	$HUD.update_inventory(player.inventory)
 	$HUD.update_selection(player.inventory[player.inventory_index])
 	$SortingLayer.add_child(player)
-	print($"/root/Global".get_loot("common", "wo"))
 	
 	goblin_count = 0
 	wave_size = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b2o261tctyjcl"]
 
 [ext_resource type="Script" path="res://scripts/room_001.gd" id="1_bxbwk"]
-[ext_resource type="Texture2D" uid="uid://bxbvxst1gsf2r" path="res://art/Tiles.png" id="1_keuro"]
+[ext_resource type="Texture2D" uid="uid://bxbvxst1gsf2r" path="res://art/Placeholder/Tiles.png" id="1_keuro"]
 [ext_resource type="PackedScene" uid="uid://dwxi2ams24m26" path="res://scenes/player/player.tscn" id="2_q3q8k"]
 [ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="3_cmwwo"]
 

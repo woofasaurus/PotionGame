@@ -11,7 +11,6 @@ var options
 func _ready():
 	$PopupText.set_text("[R] to open")
 	$PopupText.hide()
-	print("player!: " + str($"/root/Global".player))
 	options = legendary_select_scene.instantiate()
 	get_tree().current_scene.add_child(options)
 	options.set_variables()

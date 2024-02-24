@@ -8,7 +8,6 @@ var potion2
 var potion3
 
 func set_variables():
-	print ("set: " + str($"/root/Global".player))
 	assert($"/root/Global".player != null, "You fucking dumbass, no player is initialized")
 	player = $"/root/Global".player
 	potion1 =  $"/root/Global".get_loot("legendary")
