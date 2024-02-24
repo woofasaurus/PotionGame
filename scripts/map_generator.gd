@@ -42,6 +42,7 @@ func _generate_room_two(room_num):
 func _generate_rooms(pool_range: Array, num_rooms: int):
 	var coord_offset = Vector2i(0, 0) # The x and y offset that all of the generated rooms have accumulated.
 	var last_index = -1 # Intialized at -1, just means that it's the first go.
+	var second_last_index = -2
 	var room_instance = self.room_pool[0].instantiate() # Just here so that the if condition can execute and doesn't give errors.
 	
 	for i in range(num_rooms):
@@ -49,6 +50,8 @@ func _generate_rooms(pool_range: Array, num_rooms: int):
 		
 		if last_index != -1:
 			index_pool.erase(last_index)
+			if second_last_index > -1:
+				index_pool.erase(second_last_index)
 		var rand_index = index_pool.pick_random()
 
 		room_instance = self.room_pool[rand_index].instantiate()
@@ -65,6 +68,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int):
 			self.floor_map.set_cell(0, new_pos, 0, atlas_coords)
 
 		coord_offset += Vector2i(room_instance.room_width + 1, room_instance.exit_height)
+		second_last_index = last_index
 		last_index = rand_index
 
 # Called when the node enters the scene tree for the first time.

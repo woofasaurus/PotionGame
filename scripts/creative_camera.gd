@@ -7,6 +7,8 @@ extends Camera2D
 @export var zoom_speed = 1
 @export var zoom_index = 5
 @export var zoom_list = [0.05, 0.1, 0.25, 0.5, 0.75, 1.0, 2.0, 3.0]
+@export var space_modifier = 1
+@export var shift_added_modifier = 2
 
 # negative action, positive action
 var motion = Vector2(0, 0)
@@ -28,16 +30,18 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var mouse_pos_string = "{1}, {2}".format({"1" : int(get_global_mouse_position()[0]), "2" : int(get_global_mouse_position()[0])})
-	var space_multiplier = 1 # Goes double speed if you hold space
+	var multiplier = 1 # Goes double speed if you hold space
  
 	motion.x = Input.get_axis("move_left", "move_right") 
 	motion.y = Input.get_axis("move_up", "move_down")
 
 	if Input.is_action_pressed("ui_accept"):
-		space_multiplier += 1
+		multiplier += 1
+		if Input.is_action_pressed("control"):
+			multiplier += shift_added_modifier
 
-	self.position.x += motion.x * (move_speed * delta) * space_multiplier
-	self.position.y += motion.y * (move_speed * delta) * space_multiplier
+	self.position.x += motion.x * (move_speed * delta) * multiplier
+	self.position.y += motion.y * (move_speed * delta) * multiplier
 
 	self.zoom.x = zoom_list[zoom_index]
 	self.zoom.y = zoom_list[zoom_index]
