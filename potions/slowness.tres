@@ -7,7 +7,7 @@
 script = ExtResource("1_jvfon")
 name = "Potion of Slowness"
 rarity = "common"
+description = ""
 satiation = 15
-id = 5
 texture = ExtResource("2_u6aa7")
 color = Color(0.258824, 0.380392, 0.407843, 0.392157)

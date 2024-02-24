@@ -23,7 +23,6 @@ func set_variables(_potion_reference, _direction, _velocity):
 	spin = sign(direction.x)*4
 
 func _on_area_entered(area):
-	print(area.get_name())
 	if area.get_name() == "PlayerHurtbox":
 		area.owner.health -= 100
 	elif area.is_in_group("mobs"):

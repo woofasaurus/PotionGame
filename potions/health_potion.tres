@@ -7,7 +7,7 @@
 script = ExtResource("1_xg0i4")
 name = "Health Potion"
 rarity = "common"
+description = ""
 satiation = 10
-id = 2
 texture = ExtResource("2_ah3jc")
 color = Color(0.815686, 0.25098, 0.219608, 0.392157)

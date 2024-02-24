@@ -11,6 +11,7 @@ var metabolizing = []
 @export var speed = 400
 @export var dodge_speed = 800
 @export var max_health = 3
+var throw_speed = 700;
 var health = max_health
 var prev_health = max_health
 @export var inventory = [preload("res://potions/fire_breathing.tres"), preload("res://potions/water.tres"), preload("res://potions/water.tres")]
@@ -125,7 +126,7 @@ func _input(event):
 func throw_potion(_potion_reference):
 	var potion_projectile = potion_scene.instantiate()
 	potion_projectile.global_position = $Head.global_position
-	potion_projectile.set_variables(_potion_reference, (get_global_mouse_position() - $Head.global_position), 700)
+	potion_projectile.set_variables(_potion_reference, (get_global_mouse_position() - $Head.global_position), throw_speed)
 	get_tree().current_scene.add_child(potion_projectile)
 	inventory_update.emit(inventory)
 
