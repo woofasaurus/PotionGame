@@ -973,4 +973,4 @@ position = Vector2(3231, 668)
 scale = Vector2(0.34, 0.34)
 
 [node name="Postion Tracker" type="Node2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(734.44, 734.44)
