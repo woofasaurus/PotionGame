@@ -1,2 +1,4 @@
 *.tmp
 *.import
+.godot/
+*.translation

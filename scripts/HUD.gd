@@ -7,7 +7,7 @@ func show_message(text):
 	$Message.show()
 	$MessageTimer.start()
 
-func _process(delta):
+func _process(_delta):
 	if $"/root/Global".player != null:
 		var thirst_level = ($"/root/Global".player.thirst/$"/root/Global".player.max_thirst)
 		$ScreenThirst.set_modulate(Color(1, 1, 0.5, (1 - thirst_level)*0.5))
