@@ -4,7 +4,7 @@ var player;
 var max_loot = 100;
 var loot_count = 0;
 
-var chest_reference = preload("res://loot/chest.tscn")
+var chest_reference = preload("res://scenes/chest.tscn")
 #region LootArrays
 var mundane_array = [preload("res://potions/water.tres")]
 

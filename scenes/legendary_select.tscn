@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://64fwtqkdlbyv"]
+[gd_scene load_steps=3 format=3 uid="uid://bk0vb3ngiyjbx"]
 
-[ext_resource type="Script" path="res://LegendarySelect.gd" id="1_51foc"]
+[ext_resource type="Script" path="res://scripts/LegendarySelect.gd" id="1_87l5j"]
 [ext_resource type="Texture2D" uid="uid://dy4g3wpl3rv6h" path="res://art/PotionSprites/Potions0001.png" id="2_2cfj5"]
 
 [node name="LegendarySelect" type="CanvasLayer"]
-script = ExtResource("1_51foc")
+script = ExtResource("1_87l5j")
 
 [node name="Option1" type="Button" parent="."]
 anchors_preset = 8

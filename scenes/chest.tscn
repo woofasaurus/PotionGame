@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhbumxf5xfrcs"]
+[gd_scene load_steps=9 format=3 uid="uid://kx77k1sx7i0k"]
 
-[ext_resource type="Script" path="res://loot/chest.gd" id="1_3iivl"]
+[ext_resource type="Script" path="res://scripts/chest.gd" id="1_awm0b"]
 [ext_resource type="Texture2D" uid="uid://bs20jka0a2cm6" path="res://art/Placeholder/PlaceholderChest.png" id="1_ye4xf"]
 [ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/popup_text.tscn" id="3_6431b"]
 
@@ -50,7 +50,7 @@ size = Vector2(389, 277)
 
 [node name="Chest" type="StaticBody2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_3iivl")
+script = ExtResource("1_awm0b")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

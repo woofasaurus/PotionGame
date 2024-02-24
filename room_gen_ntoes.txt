@@ -1,0 +1,11 @@
+Can either take the set cell approach with having the maps in txt files or something and then like setting the tiles or something.
+Going to be exploring this idea. -> Other plan is we can load the scenes before hand and then connect them.
+
+Methods to try:
+* Note that these do not take into account the scales of things. Must apply the transfomations.
+map_to_local() - Gives the local coordinates of the tile givne by the coordinates. Can use a Node2D's to_global() method to get its global coords (relative to that Node's)
+local_to_map() - Gives the map coordinates given the local coordinates. Inverse of the other function.
+get_cell_atlas_coords() - Given the map coords, gives the atlast coords.  That is, the coords that of where that tile appears on the TileSet
+get_cell_tile_data() - Returns the TileData object of of the tile at a specfic coordinate.
+get_used_cells() - Returns every single coordinate in map coordiantes that is being used.
+set_cell() - Sets the cell according the the atlas coordinates.

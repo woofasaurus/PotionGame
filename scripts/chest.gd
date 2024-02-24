@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var legendary_select_scene = preload("res://legendary_select.tscn")
+var legendary_select_scene = preload("res://scenes/legendary_select.tscn")
 var popup_scene = preload("res://scenes/popup_text.tscn")
 var in_range = false
 var open = false
