@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3 uid="uid://c45vcfgd75wj4"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_vnduc"]
+[ext_resource type="Texture2D" uid="uid://dm05u00137q18" path="res://art/WhiteVignette.png" id="2_4xbmj"]
+[ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="2_pr86w"]
+
+
+[sub_resource type="InputEventAction" id="InputEventAction_nwvch"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_2tlqa"]
+events = [SubResource("InputEventAction_nwvch")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_vnduc")
+
+[node name="ScreenThirst" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -184.0
+offset_right = 532.0
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4xbmj")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_right = 190.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 64
+text = "400"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 64
+text = "LETS GO!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -200.0
+offset_right = 104.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_2tlqa")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Inventory" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.00939)
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 20
+text = "Empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="GoblinCount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cash" type="Label" parent="."]
+offset_right = 192.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="InventorySelection" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -77.39
+offset_right = 200.0
+offset_bottom = -35.96
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_pr86w")
+theme_override_font_sizes/font_size = 40
+text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

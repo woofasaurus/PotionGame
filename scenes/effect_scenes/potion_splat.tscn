@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://he22u54b1yuj"]
+
+[ext_resource type="Texture2D" uid="uid://bdf7nprdj0ywv" path="res://art/Effects/PotionSplat.png" id="1_irl4l"]
+[ext_resource type="Script" path="res://scripts/potion_splat.gd" id="2_7upn5"]
+
+
+[node name="PotionSplat" type="CPUParticles2D"]
+z_index = -1
+amount = 30
+lifetime = 0.1
+explosiveness = 1.0
+randomness = 0.5
+texture = ExtResource("1_irl4l")
+spread = 85.91
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 1200.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+color = Color(0.564706, 0, 0.564706, 1)
+script = ExtResource("2_7upn5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
