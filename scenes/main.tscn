@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud.tscn" id="4_8w8u7"]
 [ext_resource type="Texture2D" uid="uid://caprmfdyskypl" path="res://art/MCAssets/PotionGameBackround.png" id="4_pfpml"]
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="6_ak4ja"]
-[ext_resource type="PackedScene" path="res://loot/loot.tscn" id="7_4kajd"]
+[ext_resource type="PackedScene" uid="uid://idrh8aajh4fd" path="res://scenes/loot.tscn" id="7_4kajd"]
 [ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://scenes/terrain/torch.tscn" id="9_qn2pj"]
 [ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]
 [ext_resource type="PackedScene" uid="uid://bpfj3nqdwx1y2" path="res://scenes/rooms/basic_room.tscn" id="11_lts5b"]

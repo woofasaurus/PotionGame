@@ -6,6 +6,6 @@
 [node name="Test" type="Node2D"]
 
 [node name="room_2" parent="." instance=ExtResource("1_6nylk")]
-position = Vector2(4315, 174)
+position = Vector2(4414, -141)
 
 [node name="room_001" parent="." instance=ExtResource("2_o28oi")]
