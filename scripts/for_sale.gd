@@ -1,6 +1,6 @@
 extends Area2D
 
-var popup_scene = preload("res://scenes/popup_text.tscn")
+var popup_scene = preload("res://scenes/hud/popup_text.tscn")
 var potion_reference
 var purchaseable = false
 var price = -1;

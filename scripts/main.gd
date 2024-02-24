@@ -21,10 +21,7 @@ func new_game(): #Called by start button
 	player.connect('dead', game_over)
 	player.connect('health_update', $HUD.update_health)
 	player.connect('inventory_update', $HUD.update_inventory)
-	player.connect('select_update', $HUD.update_selection)
 	player.connect('cash_update', $HUD.update_cash)
-	$HUD.update_inventory(player.inventory)
-	$HUD.update_selection(player.inventory[player.inventory_index])
 	$SortingLayer.add_child(player)
 	
 	goblin_count = 0

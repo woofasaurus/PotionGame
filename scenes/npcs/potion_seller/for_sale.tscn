@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/for_sale.gd" id="1_kyfvb"]
 [ext_resource type="Texture2D" uid="uid://dy4g3wpl3rv6h" path="res://art/PotionSprites/Potions0001.png" id="2_kwqyo"]
-[ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/popup_text.tscn" id="3_naudc"]
+[ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/hud/popup_text.tscn" id="3_naudc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxhv1"]
 size = Vector2(3.2, 66.6)

@@ -39,13 +39,11 @@ func _on_arm_animation_1_animation_changed(_old_name, new_name):
 	if (new_name == $ArmAnimation2.get_current_animation()):
 		random_animation($ArmAnimation1)
 		$ArmAnimation1.play($ArmAnimation1.get_queue()[0])
-		print($ArmAnimation2.get_queue())
 	random_animation($ArmAnimation1)
 
 
 func _on_arm_animation_2_animation_changed(_old_name, new_name):
 	if (new_name == $ArmAnimation1.get_current_animation()):
 		random_animation($ArmAnimation2)
-		print($ArmAnimation2.get_queue())
 		$ArmAnimation2.play($ArmAnimation2.get_queue()[0])
 	random_animation($ArmAnimation2)

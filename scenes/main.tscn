@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccenq1pij3i58"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p8v7w"]
-[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud.tscn" id="4_8w8u7"]
+[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="4_8w8u7"]
 [ext_resource type="Texture2D" uid="uid://caprmfdyskypl" path="res://art/MCAssets/PotionGameBackround.png" id="4_pfpml"]
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="6_ak4ja"]
 [ext_resource type="PackedScene" uid="uid://idrh8aajh4fd" path="res://scenes/loot.tscn" id="7_4kajd"]
