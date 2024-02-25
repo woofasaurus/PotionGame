@@ -10,5 +10,5 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_area_entered(area):
-	if area.get_name() == "PlayerHurtbox":
+	if area.get_name() == "PlayerHitbox":
 		area.owner.health -= 1

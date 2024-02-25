@@ -1,27 +1,4 @@
-extends CharacterBody2D
-
-class_name Mob
-
-signal dead
-
-#region AI Variables
-const STATES = ["idle", "pursuing", "attacking"]
-var current_state = "idle"
-var target = null
-var direction_to_target = Vector2.ZERO
-
-var slash_scene = preload("res://scenes/projectiles/slash.tscn")
-var attacking = false
-#endregion
-
-#region stat variables
-@export var speed = 250;
-@export var max_health = 100;
-var health = max_health;
-#endregion
-
-func _ready():
-	$CollisionShape2D.disabled = false
+extends Mob
 
 func idle():
 	velocity = Vector2.ZERO

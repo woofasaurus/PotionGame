@@ -1,7 +1,9 @@
 extends Node
 
 var player_scene = preload("res://scenes/player/player.tscn")
-var mob_scene = preload("res://scenes/enemies/mob.tscn")
+#var mob_scene = preload("res://scenes/enemies/mob.tscn")
+var skeleton_scene = preload("res://scenes/enemies/skeleton.tscn")
+var mob_scene = skeleton_scene
 var loot_scene = preload("res://scenes/loot.tscn")
 
 var goblin_count = 0

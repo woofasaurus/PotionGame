@@ -1,72 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://nfkkv7eqak1r"]
+[gd_scene load_steps=12 format=3 uid="uid://nfkkv7eqak1r"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_u5ms3"]
-[ext_resource type="Texture2D" uid="uid://baq1xp5exl7oy" path="res://art/GoblinAssets/GoblinAttack.png" id="2_7s8g1"]
-[ext_resource type="PackedScene" uid="uid://bbrrlt2n421m" path="res://scenes/projectiles/slash.tscn" id="2_wpoti"]
-[ext_resource type="Texture2D" uid="uid://bigap6shvptjn" path="res://art/GoblinAssets/GoblinRun.png" id="3_bewmn"]
-
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ylpsf"]
-atlas = ExtResource("2_7s8g1")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vhoqt"]
-atlas = ExtResource("2_7s8g1")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmo84"]
-atlas = ExtResource("2_7s8g1")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4h8fo"]
-atlas = ExtResource("2_7s8g1")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0gqf"]
-atlas = ExtResource("3_bewmn")
-region = Rect2(0, 0, 521, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wbko"]
-atlas = ExtResource("3_bewmn")
-region = Rect2(521, 0, 521, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ld3e1"]
-atlas = ExtResource("3_bewmn")
-region = Rect2(1042, 0, 521, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xbd4r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ylpsf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vhoqt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tmo84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4h8fo")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n0gqf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6wbko")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ld3e1")
-}],
-"loop": true,
-"name": &"run",
-"speed": 6.0
-}]
+[ext_resource type="Texture2D" uid="uid://d2r5iq5g4nkex" path="res://art/Enemies/GoblinFull.png" id="4_qyh5a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ko0h"]
 radius = 12.0
@@ -76,29 +11,88 @@ height = 48.0
 radius = 22.0
 height = 63.16
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvwxp"]
+radius = 27.682
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dbpqi"]
+radius = 73.504
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qp7a"]
+radius = 19.358
+
+[sub_resource type="Animation" id="Animation_lc78r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xc11e"]
+resource_name = "attack"
+length = 0.666683
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nv7i4"]
+resource_name = "walk"
+length = 0.500017
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5enc8"]
+_data = {
+"RESET": SubResource("Animation_lc78r"),
+"attack": SubResource("Animation_xc11e"),
+"walk": SubResource("Animation_nv7i4")
+}
+
 [node name="Mob" type="CharacterBody2D" groups=["breakable", "mobs"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_u5ms3")
-slash_scene = ExtResource("2_wpoti")
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -22.99)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_xbd4r")
-animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11.03)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4ko0h")
 
-[node name="MobHurtbox" type="Area2D" parent="." groups=["mobs"]]
+[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
 collision_layer = 4
 collision_mask = 0
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="MobHurtbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="MobHitbox"]
 position = Vector2(0, -29.38)
 shape = SubResource("CapsuleShape2D_ii0j1")
 debug_color = Color(0, 0.647059, 0.254902, 0.419608)
@@ -114,6 +108,50 @@ one_shot = true
 [node name="SwingPoint" type="Marker2D" parent="."]
 position = Vector2(0, -30)
 
-[connection signal="area_entered" from="MobHurtbox" to="." method="_on_mob_hurtbox_area_entered"]
+[node name="PursueRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="PursueRangeArea" type="CollisionShape2D" parent="PursueRange"]
+scale = Vector2(84.22, 84.22)
+shape = SubResource("CircleShape2D_lvwxp")
+debug_color = Color(0, 0.619608, 0.584314, 0.278431)
+
+[node name="AggroRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="AggroRangeArea" type="CollisionShape2D" parent="AggroRange"]
+scale = Vector2(16.64, 16.64)
+shape = SubResource("CircleShape2D_dbpqi")
+debug_color = Color(0.862745, 0.313726, 0.458824, 0.27451)
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 2
+
+[node name="AttackRangeArea" type="CollisionShape2D" parent="AttackRange"]
+scale = Vector2(8.74, 8.74)
+shape = SubResource("CircleShape2D_0qp7a")
+debug_color = Color(0.933333, 0.133333, 0.541176, 0.419608)
+
+[node name="FullSpriteSheet" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_qyh5a")
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5enc8")
+}
+
+[connection signal="area_entered" from="MobHitbox" to="." method="_on_mob_hurtbox_area_entered"]
 [connection signal="timeout" from="TimeTillHurtbox" to="." method="_on_time_till_hurtbox_timeout"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
+[connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="AggroRange" to="." method="_on_aggro_range_area_exited"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]

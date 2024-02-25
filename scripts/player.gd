@@ -81,8 +81,8 @@ func _physics_process(delta):
 		pass
 	
 	if health != prev_health:
-		$PlayerHurtbox.set_collision_layer_value( 2, false )
-		$PlayerHurtbox.set_collision_layer_value( 6, true )
+		$PlayerHitbox.set_collision_layer_value( 2, false )
+		$PlayerHitbox.set_collision_layer_value( 6, true )
 		$FullSpriteSheet.hide()
 		if health < prev_health:
 			$InvulnerableTimer.start()
@@ -133,8 +133,8 @@ func velocity_to_key_press_direction():
 		facing = velocity.normalized() #preserves last direction of movement for dodging when stationary
 
 func begin_dodge(): #start dodge
-	$PlayerHurtbox.set_collision_layer_value( 2, false )
-	$PlayerHurtbox.set_collision_layer_value( 6, true )
+	$PlayerHitbox.set_collision_layer_value( 2, false )
+	$PlayerHitbox.set_collision_layer_value( 6, true )
 	set_collision_mask_value( 8, false ) 
 	velocity = facing * dodge_speed #increase velocity and dont change it until dodge is over
 	dodging = true;
@@ -142,8 +142,8 @@ func begin_dodge(): #start dodge
 
 func _on_dodge_timer_timeout(): #end dodge
 	dodging = false
-	$PlayerHurtbox.set_collision_layer_value( 2, true )
-	$PlayerHurtbox.set_collision_layer_value( 6, false )
+	$PlayerHitbox.set_collision_layer_value( 2, true )
+	$PlayerHitbox.set_collision_layer_value( 6, false )
 	set_collision_mask_value( 8, true )
 	$DodgeCooldown.start()
 	can_dodge = false
@@ -154,8 +154,8 @@ func _on_dodge_cooldown_timeout(): #can dodge again
 #endregion
 
 func _on_invulnerable_timeout(): #i-frames after being hit
-	$PlayerHurtbox.set_collision_layer_value( 2, true )
-	$PlayerHurtbox.set_collision_layer_value( 6, false )
+	$PlayerHitbox.set_collision_layer_value( 2, true )
+	$PlayerHitbox.set_collision_layer_value( 6, false )
 	$FullSpriteSheet.show()
 
 #region Potion Throw/Drink

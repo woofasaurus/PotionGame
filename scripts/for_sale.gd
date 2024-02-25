@@ -15,12 +15,12 @@ func set_variables(_potion_reference, _price):
 	$PopupText.set_text("[R] to purchase " + _potion_reference.name + "\nFor " + str(price) + "g")
 
 func _on_area_entered(area):
-	if area.get_name() == "PlayerHurtbox":
+	if area.get_name() == "PlayerHitbox":
 		$PopupText.show()
 		purchaseable = true
 
 func _on_area_exited(area):
-	if area.get_name() == "PlayerHurtbox":
+	if area.get_name() == "PlayerHotbox":
 		$PopupText.hide()
 		purchaseable = false
 

@@ -118,11 +118,11 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="PlayerHurtbox" type="Area2D" parent="."]
+[node name="PlayerHitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="PlayerHurtbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(0, -48.2)
 shape = SubResource("CapsuleShape2D_4am80")
 debug_color = Color(0, 0.647059, 0.227451, 0.419608)
@@ -155,4 +155,4 @@ offset = Vector2(400, 0)
 [connection signal="timeout" from="DodgeTimer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="InvulnerableTimer" to="." method="_on_invulnerable_timeout"]
-[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerHitbox" to="." method="_on_hitbox_area_entered"]
