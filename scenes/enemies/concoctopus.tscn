@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://deqs063c8ujmo"]
+
+[ext_resource type="Script" path="res://Concoctopus.gd" id="1_t6415"]
+[ext_resource type="Texture2D" uid="uid://c0ld5xmjfctc3" path="res://art/Enemies/Concoctopus/ConcoctoHead.png" id="2_eoouo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wacac"]
+radius = 4.46429
+height = 30.9066
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o7h57"]
+radius = 396.0
+height = 1353.33
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlcx7"]
+radius = 789.446
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prdof"]
+radius = 82.1545
+
+[sub_resource type="Animation" id="Animation_qub1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4xhuk"]
+resource_name = "die"
+length = 0.666683
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_dn2d1"]
+resource_name = "idle"
+length = 0.500017
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_i13oc"]
+resource_name = "spawn"
+length = 0.666683
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gt4l1"]
+_data = {
+"RESET": SubResource("Animation_qub1g"),
+"die": SubResource("Animation_4xhuk"),
+"idle": SubResource("Animation_dn2d1"),
+"spawn": SubResource("Animation_i13oc")
+}
+
+[node name="Concoctopus" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_t6415")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(24.96, 24.96)
+shape = SubResource("CapsuleShape2D_wacac")
+
+[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitboxShape" type="CollisionShape2D" parent="MobHitbox"]
+position = Vector2(0, -600)
+shape = SubResource("CapsuleShape2D_o7h57")
+
+[node name="SpawnRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="SpawnRangeArea" type="CollisionShape2D" parent="SpawnRange"]
+shape = SubResource("CircleShape2D_jlcx7")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="AttackRangeArea" type="CollisionShape2D" parent="AttackRange"]
+scale = Vector2(80, 80)
+shape = SubResource("CircleShape2D_prdof")
+debug_color = Color(0.933333, 0.133333, 0.541176, 0.419608)
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -600)
+texture = ExtResource("2_eoouo")
+hframes = 5
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gt4l1")
+}
+
+[connection signal="area_entered" from="SpawnRange" to="." method="_on_spawn_range_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

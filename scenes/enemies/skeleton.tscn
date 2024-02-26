@@ -20,7 +20,7 @@ radius = 73.504
 [sub_resource type="CircleShape2D" id="CircleShape2D_ai5fc"]
 radius = 32.5104
 
-[sub_resource type="Animation" id="Animation_fpt81"]
+[sub_resource type="Animation" id="Animation_ssqnx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,9 +35,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_51nu1"]
+[sub_resource type="Animation" id="Animation_e6asp"]
 resource_name = "attack"
-length = 0.83335
+length = 0.50001
 step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -46,15 +46,15 @@ tracks/0/path = NodePath("FullSpriteSheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_4ln1w"]
-resource_name = "spawn"
-length = 1.50002
+[sub_resource type="Animation" id="Animation_e6jbs"]
+resource_name = "idle"
+length = 0.10001
 step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,13 +63,30 @@ tracks/0/path = NodePath("FullSpriteSheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+"values": [8]
 }
 
-[sub_resource type="Animation" id="Animation_7osyx"]
+[sub_resource type="Animation" id="Animation_2g7we"]
+resource_name = "spawn"
+length = 1.33335
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rcqnq"]
 resource_name = "walk"
 length = 0.666683
 step = 0.166667
@@ -86,29 +103,13 @@ tracks/0/keys = {
 "values": [14, 15, 16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_gdo0f"]
-resource_name = "idle"
-length = 0.10001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FullSpriteSheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp17f"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5r5m"]
 _data = {
-"RESET": SubResource("Animation_fpt81"),
-"attack": SubResource("Animation_51nu1"),
-"idle": SubResource("Animation_gdo0f"),
-"spawn": SubResource("Animation_4ln1w"),
-"walk": SubResource("Animation_7osyx")
+"RESET": SubResource("Animation_ssqnx"),
+"attack": SubResource("Animation_e6asp"),
+"idle": SubResource("Animation_e6jbs"),
+"spawn": SubResource("Animation_2g7we"),
+"walk": SubResource("Animation_rcqnq")
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
@@ -167,7 +168,7 @@ vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dp17f")
+"": SubResource("AnimationLibrary_n5r5m")
 }
 
 [node name="TimeTillHurtbox" type="Timer" parent="."]
@@ -180,6 +181,7 @@ position = Vector2(0, -350)
 [node name="AttackDuration" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="area_entered" from="PursueRange" to="." method="_on_pursue_range_area_entered"]
 [connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_aggro_range_area_exited"]

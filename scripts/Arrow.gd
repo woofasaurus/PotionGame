@@ -24,4 +24,5 @@ func _on_area_entered(area):
 
 func _on_body_entered(body):
 	if body.get_name() == "TileMap":
-		queue_free()
+		#queue_free()
+		pass

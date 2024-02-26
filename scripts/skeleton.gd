@@ -34,7 +34,6 @@ func _physics_process(_delta):
 		
 		queue_free()
 	
-	# print(current_state)
 	if self.spawned:
 		match current_state:
 			"idle":
@@ -121,4 +120,3 @@ func _on_attack_range_area_exited(area):
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"
-
