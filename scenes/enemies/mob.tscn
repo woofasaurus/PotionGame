@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://nfkkv7eqak1r"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_u5ms3"]
-[ext_resource type="Texture2D" uid="uid://d2r5iq5g4nkex" path="res://art/Enemies/GoblinFull.png" id="4_qyh5a"]
+[ext_resource type="Texture2D" uid="uid://tsmvtljq0dol" path="res://art/Enemies/GoblinFull.png" id="4_qyh5a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ko0h"]
 radius = 12.0

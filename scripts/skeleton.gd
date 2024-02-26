@@ -1,5 +1,10 @@
 extends Mob
 
+@onready var animation = $AnimationPlayer
+@onready var sprite = $FullSpriteSheet
+
+var spawned: bool = false
+
 func idle():
 	velocity = Vector2.ZERO
 
@@ -19,7 +24,7 @@ func _physics_process(_delta):
 		
 		queue_free()
 	
-	print(current_state)
+	# print(current_state)
 	match current_state:
 		"idle":
 			idle()
@@ -28,6 +33,9 @@ func _physics_process(_delta):
 		"attacking":
 			attack()
 	
+	if not self.spawned:
+		self.velocity = Vector2.ZERO
+
 	set_animations()
 	move_and_slide()
 
@@ -36,10 +44,18 @@ func set_animations():
 		"idle":
 			pass
 		"pursuing":
-			$AnimationPlayer.play("walk")
-			$FullSpriteSheet.flip_h = direction_to_target.x < 0
+			if not self.spawned:
+				animation.play("spawn")
+			else:
+				animation.play("walk")
+				sprite.flip_h = direction_to_target.x > 0
 		"attacking":
-			$AnimationPlayer.play("attack")
+			if self.spawned:
+				animation.play("attack")
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "spawn":
+		self.spawned = true
 
 func _on_attack_duration_timeout():
 	attacking = false;
@@ -53,22 +69,26 @@ func _on_time_till_hurtbox_timeout():
 
 #region Aggro Range
 func _on_aggro_range_area_entered(area):
+	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"
 
 func _on_pursue_range_area_exited(area):
+	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = null
 		current_state = "idle"
 #endregion
 
 func _on_attack_range_area_entered(area):
+	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "attacking"
 
 func _on_attack_range_area_exited(area):
+	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"

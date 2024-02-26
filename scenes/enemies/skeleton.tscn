@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://4u37vy7swd6f"]
 
-[ext_resource type="Script" path="res://skeleton.gd" id="1_nyark"]
-[ext_resource type="Texture2D" uid="uid://hjepr5kw5mlr" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
+[ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_u66c2"]
+[ext_resource type="Texture2D" uid="uid://cj1grk4l16flk" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0lk2"]
 radius = 9.47568
@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
-script = ExtResource("1_nyark")
+script = ExtResource("1_u66c2")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -151,3 +151,9 @@ vframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_dp17f")
 }
+
+[connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
+[connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
