@@ -20,7 +20,7 @@ func _on_area_entered(area):
 		purchaseable = true
 
 func _on_area_exited(area):
-	if area.get_name() == "PlayerHotbox":
+	if area.get_name() == "PlayerHitbox":
 		$PopupText.hide()
 		purchaseable = false
 

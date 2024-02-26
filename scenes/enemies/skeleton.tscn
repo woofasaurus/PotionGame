@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://4u37vy7swd6f"]
+[gd_scene load_steps=14 format=3 uid="uid://4u37vy7swd6f"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_u66c2"]
-[ext_resource type="Texture2D" uid="uid://cj1grk4l16flk" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
+[ext_resource type="Texture2D" uid="uid://hjepr5kw5mlr" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0lk2"]
 radius = 9.47568
@@ -12,13 +12,13 @@ radius = 163.095
 height = 576.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yntqa"]
-radius = 27.682
+radius = 41.1849
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kv78v"]
 radius = 73.504
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ai5fc"]
-radius = 19.358
+radius = 32.5104
 
 [sub_resource type="Animation" id="Animation_fpt81"]
 length = 0.001
@@ -86,15 +86,34 @@ tracks/0/keys = {
 "values": [14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_gdo0f"]
+resource_name = "idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dp17f"]
 _data = {
 "RESET": SubResource("Animation_fpt81"),
 "attack": SubResource("Animation_51nu1"),
+"idle": SubResource("Animation_gdo0f"),
 "spawn": SubResource("Animation_4ln1w"),
 "walk": SubResource("Animation_7osyx")
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
+scale = Vector2(0.35, 0.35)
+collision_layer = 4
 script = ExtResource("1_u66c2")
 metadata/_edit_group_ = true
 
@@ -133,7 +152,7 @@ debug_color = Color(0.862745, 0.313726, 0.458824, 0.27451)
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 256
-collision_mask = 2
+collision_mask = 34
 
 [node name="AttackRangeArea" type="CollisionShape2D" parent="AttackRange"]
 scale = Vector2(80, 80)
@@ -156,13 +175,14 @@ wait_time = 0.333
 one_shot = true
 
 [node name="ArrowSpawn" type="Marker2D" parent="."]
-position = Vector2(-92, -241)
+position = Vector2(0, -350)
 
 [node name="AttackDuration" type="Timer" parent="."]
 wait_time = 2.0
 
 [connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="AggroRange" to="." method="_on_aggro_range_area_exited"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

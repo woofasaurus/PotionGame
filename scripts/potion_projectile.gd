@@ -34,3 +34,7 @@ func _on_area_entered(area):
 		if $"/root/Global".player != null:
 			potion_splat.rotation = (get_position() - $"/root/Global".player.get_position()).angle()
 	queue_free()
+
+func _on_body_entered(body):
+	if body.get_name() == "TileMap":
+		queue_free()

@@ -42,7 +42,7 @@ func _physics_process(_delta):
 		
 		queue_free()
 	
-	print(current_state)
+	# print(current_state)
 	match current_state:
 		"idle":
 			idle()
