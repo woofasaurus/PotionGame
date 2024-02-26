@@ -72,7 +72,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7osyx"]
 resource_name = "walk"
 length = 0.666683
-loop_mode = 1
 step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -137,7 +136,7 @@ collision_layer = 256
 collision_mask = 2
 
 [node name="AttackRangeArea" type="CollisionShape2D" parent="AttackRange"]
-scale = Vector2(8.74, 8.74)
+scale = Vector2(80, 80)
 shape = SubResource("CircleShape2D_ai5fc")
 debug_color = Color(0.933333, 0.133333, 0.541176, 0.419608)
 
@@ -152,8 +151,20 @@ libraries = {
 "": SubResource("AnimationLibrary_dp17f")
 }
 
+[node name="TimeTillHurtbox" type="Timer" parent="."]
+wait_time = 0.333
+one_shot = true
+
+[node name="ArrowSpawn" type="Marker2D" parent="."]
+position = Vector2(-92, -241)
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="TimeTillHurtbox" to="." method="_on_time_till_hurtbox_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]

@@ -4,34 +4,46 @@ extends Mob
 @onready var sprite = $FullSpriteSheet
 
 var spawned: bool = false
+var arrow_scene = preload("res://scenes/projectiles/arrow.tscn")
 
 func idle():
 	velocity = Vector2.ZERO
 
 func pursue():
 	direction_to_target = target.get_position() - get_position()
-	velocity = direction_to_target.normalized()*speed
+	
+	if direction_to_target.length() > 500 and current_state == "pursuing":
+		self.velocity = Vector2.ZERO
+		current_state = "attacking"
+	# Walks backwards if the target is 500 or less units away
+	else:
+		self.velocity = -direction_to_target.normalized() * speed
+		
 
 func attack():
 	if not attacking:
+		self.velocity = Vector2.ZERO
 		attacking = true
 		$TimeTillHurtbox.start()
 		$AttackDuration.start()
 
 func _physics_process(_delta):
+	# print(current_state)
+	
 	if health <= 0:
 		dead.emit(position, "common")
 		
 		queue_free()
 	
 	# print(current_state)
-	match current_state:
-		"idle":
-			idle()
-		"pursuing":
-			pursue()
-		"attacking":
-			attack()
+	if self.spawned:
+		match current_state:
+			"idle":
+				idle()
+			"pursuing":
+				pursue()
+			"attacking":
+				attack()
 	
 	if not self.spawned:
 		self.velocity = Vector2.ZERO
@@ -40,6 +52,8 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func set_animations():
+	sprite.flip_h = direction_to_target.x > 0
+	
 	match current_state:
 		"idle":
 			pass
@@ -47,8 +61,7 @@ func set_animations():
 			if not self.spawned:
 				animation.play("spawn")
 			else:
-				animation.play("walk")
-				sprite.flip_h = direction_to_target.x > 0
+				animation.play_backwards("walk")
 		"attacking":
 			if self.spawned:
 				animation.play("attack")
@@ -58,37 +71,34 @@ func _on_animation_player_animation_finished(anim_name):
 		self.spawned = true
 
 func _on_attack_duration_timeout():
-	attacking = false;
+	attacking = false
+	current_state = "pursuing"
 
 func _on_time_till_hurtbox_timeout():
-	var slash = slash_scene.instantiate()
-	slash.global_position = $SwingPoint.global_position
-	slash.rotation = direction_to_target.angle()
-	slash.get_node("AnimatedSprite2D").flip_v = $FullSpriteSheet.flip_h
-	get_tree().current_scene.add_child(slash)
+	print('arrow')
+	var arrow = arrow_scene.instantiate()
+
+	arrow.adjust_params((target.get_position() - $ArrowSpawn.global_position).normalized(), 2000, $ArrowSpawn.global_position, sprite.flip_h)
+	get_tree().current_scene.add_child(arrow)
 
 #region Aggro Range
 func _on_aggro_range_area_entered(area):
-	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"
 
 func _on_pursue_range_area_exited(area):
-	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = null
 		current_state = "idle"
 #endregion
 
 func _on_attack_range_area_entered(area):
-	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
-		current_state = "attacking"
+		current_state = "pursuing"
 
 func _on_attack_range_area_exited(area):
-	print(area)
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"
