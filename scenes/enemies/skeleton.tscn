@@ -115,6 +115,7 @@ _data = {
 [node name="Skeleton" type="CharacterBody2D"]
 scale = Vector2(0.35, 0.35)
 collision_layer = 4
+collision_mask = 517
 script = ExtResource("1_u66c2")
 metadata/_edit_group_ = true
 

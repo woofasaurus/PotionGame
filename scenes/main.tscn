@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccenq1pij3i58"]
+[gd_scene load_steps=8 format=3 uid="uid://ccenq1pij3i58"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p8v7w"]
 [ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="4_8w8u7"]
-[ext_resource type="Texture2D" uid="uid://caprmfdyskypl" path="res://art/MCAssets/PotionGameBackround.png" id="4_pfpml"]
 [ext_resource type="Texture2D" uid="uid://d0guvmspy3l66" path="res://art/2d_lights_and_shadows_neutral_point_light.webp" id="6_ak4ja"]
 [ext_resource type="PackedScene" uid="uid://idrh8aajh4fd" path="res://scenes/loot.tscn" id="7_4kajd"]
-[ext_resource type="PackedScene" uid="uid://ca8g03up60i5n" path="res://scenes/terrain/wall.tscn" id="8_xjcfv"]
 [ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://scenes/terrain/torch.tscn" id="9_qn2pj"]
 [ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]
 [ext_resource type="PackedScene" uid="uid://bpfj3nqdwx1y2" path="res://scenes/rooms/basic_room.tscn" id="11_lts5b"]
@@ -15,25 +13,6 @@ script = ExtResource("1_p8v7w")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0862745, 0.247059, 0.34902, 1)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -5
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.164706, 0.141176, 0.219608, 1)
-
-[node name="BG" type="TextureRect" parent="."]
-z_index = -5
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_pfpml")
-expand_mode = 1
 
 [node name="Torch2" parent="." instance=ExtResource("9_qn2pj")]
 position = Vector2(1168, 216)
@@ -62,12 +41,7 @@ y_sort_enabled = true
 position = Vector2(1464, 576)
 scale = Vector2(0.34, 0.34)
 
-[node name="Wall" parent="." instance=ExtResource("8_xjcfv")]
-position = Vector2(702, 292)
-scale = Vector2(8.38, 8.38)
-
 [node name="Node2D" parent="." instance=ExtResource("11_lts5b")]
-position = Vector2(-320, -160)
-scale = Vector2(8.38, 8.38)
+position = Vector2(-585, 196)
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]

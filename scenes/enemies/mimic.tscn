@@ -17,6 +17,21 @@ height = 63.16
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvwxp"]
 radius = 27.682
 
+[sub_resource type="Animation" id="Animation_fyyyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_1kaen"]
 resource_name = "attack"
 length = 0.833342
@@ -32,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 1, 1, 2, 2, 3, 4, 5, 0]
-}
-
-[sub_resource type="Animation" id="Animation_fyyyu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FullSpriteSheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_1mu51"]
@@ -79,6 +79,7 @@ radius = 214.009
 [node name="Mimic" type="CharacterBody2D" groups=["breakable", "mobs"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 132
+collision_mask = 513
 script = ExtResource("2_jvkoc")
 metadata/_edit_group_ = true
 

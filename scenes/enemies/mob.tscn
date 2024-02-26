@@ -79,7 +79,7 @@ _data = {
 
 [node name="Mob" type="CharacterBody2D" groups=["breakable", "mobs"]]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 517
 script = ExtResource("1_u5ms3")
 metadata/_edit_group_ = true
 

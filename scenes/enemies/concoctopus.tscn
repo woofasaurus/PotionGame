@@ -94,8 +94,8 @@ _data = {
 
 [node name="Concoctopus" type="CharacterBody2D"]
 scale = Vector2(0.75, 0.75)
-collision_layer = 5
-collision_mask = 0
+collision_layer = 516
+collision_mask = 513
 script = ExtResource("1_t6415")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
