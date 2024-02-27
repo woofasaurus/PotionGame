@@ -106,9 +106,12 @@ control={
 2d_physics/layer_5="Projectile"
 2d_physics/layer_6="PlayerDodging"
 2d_physics/layer_7="Interactable"
-2d_physics/layer_8="DodgableTerrain"
+2d_physics/layer_8="DodgeableTerrain"
+2d_physics/layer_9="AIZone"
+2d_physics/layer_10="ProjectileFriendlyTerrain"
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_vertices_to_pixel=true

@@ -23,9 +23,8 @@ func set_variables(_potion_reference, _direction, _velocity):
 	spin = sign(direction.x)*4
 
 func _on_area_entered(area):
-	if area.get_name() == "PlayerHurtbox":
-		area.owner.health -= 100
-	elif area.is_in_group("mobs"):
+	print(area)
+	if area.is_in_group("mobs"):
 		area.owner.health -= 100
 		var potion_splat = potion_splat_scene.instantiate()
 		potion_splat.set_color(potion_reference.color)
@@ -34,3 +33,7 @@ func _on_area_entered(area):
 		if $"/root/Global".player != null:
 			potion_splat.rotation = (get_position() - $"/root/Global".player.get_position()).angle()
 	queue_free()
+
+func _on_body_entered(body):
+	if body.get_name() == "TileMap":
+		queue_free()

@@ -1,0 +1,193 @@
+[gd_scene load_steps=14 format=3 uid="uid://4u37vy7swd6f"]
+
+[ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_u66c2"]
+[ext_resource type="Texture2D" uid="uid://hjepr5kw5mlr" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0lk2"]
+radius = 9.47568
+height = 19.2216
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03u6l"]
+radius = 163.095
+height = 576.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yntqa"]
+radius = 41.1849
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kv78v"]
+radius = 73.504
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ai5fc"]
+radius = 32.5104
+
+[sub_resource type="Animation" id="Animation_ssqnx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e6asp"]
+resource_name = "attack"
+length = 0.50001
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_e6jbs"]
+resource_name = "idle"
+length = 0.10001
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_2g7we"]
+resource_name = "spawn"
+length = 1.33335
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rcqnq"]
+resource_name = "walk"
+length = 0.666683
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5r5m"]
+_data = {
+"RESET": SubResource("Animation_ssqnx"),
+"attack": SubResource("Animation_e6asp"),
+"idle": SubResource("Animation_e6jbs"),
+"spawn": SubResource("Animation_2g7we"),
+"walk": SubResource("Animation_rcqnq")
+}
+
+[node name="Skeleton" type="CharacterBody2D"]
+scale = Vector2(0.35, 0.35)
+collision_layer = 4
+collision_mask = 517
+script = ExtResource("1_u66c2")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -58.6)
+scale = Vector2(14.8, 14.8)
+shape = SubResource("CapsuleShape2D_q0lk2")
+
+[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitboxShape" type="CollisionShape2D" parent="MobHitbox"]
+position = Vector2(0, -218.6)
+scale = Vector2(0.84, 0.84)
+shape = SubResource("CapsuleShape2D_03u6l")
+debug_color = Color(0, 0.647059, 0.254902, 0.419608)
+
+[node name="PursueRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="PursueRangeArea" type="CollisionShape2D" parent="PursueRange"]
+scale = Vector2(84.22, 84.22)
+shape = SubResource("CircleShape2D_yntqa")
+debug_color = Color(0, 0.619608, 0.584314, 0.278431)
+
+[node name="AggroRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="AggroRangeArea" type="CollisionShape2D" parent="AggroRange"]
+scale = Vector2(16.64, 16.64)
+shape = SubResource("CircleShape2D_kv78v")
+debug_color = Color(0.862745, 0.313726, 0.458824, 0.27451)
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 34
+
+[node name="AttackRangeArea" type="CollisionShape2D" parent="AttackRange"]
+scale = Vector2(80, 80)
+shape = SubResource("CircleShape2D_ai5fc")
+debug_color = Color(0.933333, 0.133333, 0.541176, 0.419608)
+
+[node name="FullSpriteSheet" type="Sprite2D" parent="."]
+texture = ExtResource("2_cxk32")
+offset = Vector2(0, -358.46)
+hframes = 6
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n5r5m")
+}
+
+[node name="TimeTillHurtbox" type="Timer" parent="."]
+wait_time = 0.333
+one_shot = true
+
+[node name="ArrowSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -350)
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="area_entered" from="PursueRange" to="." method="_on_pursue_range_area_entered"]
+[connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
+[connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="AggroRange" to="." method="_on_aggro_range_area_exited"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="TimeTillHurtbox" to="." method="_on_time_till_hurtbox_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]

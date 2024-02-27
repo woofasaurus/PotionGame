@@ -2,6 +2,10 @@ extends Node
 
 var player_scene = preload("res://scenes/player/player.tscn")
 var mob_scene = preload("res://scenes/enemies/mob.tscn")
+var skeleton_scene = preload("res://scenes/enemies/skeleton.tscn")
+var necromancer_scene = preload("res://scenes/enemies/necromancer.tscn")
+var concoctopus_scene = preload("res://scenes/enemies/concoctopus.tscn")
+var mimic_scene = preload("res://scenes/enemies/mimic.tscn")
 var loot_scene = preload("res://scenes/loot.tscn")
 
 var goblin_count = 0
@@ -15,6 +19,9 @@ func new_game(): #Called by start button
 	#Clear existing mobs
 	get_tree().call_group("mobs", "queue_free")
 	
+	var concoctopus = concoctopus_scene.instantiate();
+	concoctopus.position = Vector2(4000,0)
+	$SortingLayer.add_child(concoctopus)
 	#Spawn player
 	var player = player_scene.instantiate();
 	player.position = Vector2(500,500)
@@ -31,8 +38,14 @@ func new_game(): #Called by start button
 func spawn_goblins(number):
 	await get_tree().create_timer(2.0).timeout
 	for i in number:
-		#Spawn mob
+		var roll = randi() % 100
 		var mob = mob_scene.instantiate();
+		if roll < 100:
+			print ("SKELER")
+			mob = skeleton_scene.instantiate();
+			if roll < 100:
+				print ("NECRO")
+				mob = necromancer_scene.instantiate()
 		mob.position = Vector2(randi() % 100 + 100, randi() % 700 + 300) #Spawn randomly btwn (100,300) and (1800, 1000)
 		mob.connect('dead', decrement_goblin_count)
 		$SortingLayer.add_child(mob)
@@ -55,7 +68,10 @@ func decrement_goblin_count(_position, _rarity):
 		$SortingLayer.add_child(gold)
 		$"/root/Global".loot_count += 1
 		
+		droproll = randi() % 100
 		var chest = $"/root/Global".chest_reference.instantiate()
+		if droproll < 25:
+			chest = mimic_scene.instantiate()
 		chest.global_position = _position
 		$SortingLayer.add_child(chest)
 		

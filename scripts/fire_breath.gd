@@ -5,7 +5,7 @@ func _ready():
 	$SpawnFire.start()
 	
 func _on_spawn_fire_timeout():
-	var direction = get_viewport().get_mouse_position() - global_position;
+	var direction = get_global_mouse_position() - global_position;
 	rotation = direction.angle()
 	var fire_projectile = fire_projectile_scene.instantiate()
 	fire_projectile.position = global_position + direction.normalized()*50

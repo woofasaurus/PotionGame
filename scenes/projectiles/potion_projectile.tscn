@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/potion_projectile.gd" id="1_cbp4d"]
 [ext_resource type="Texture2D" uid="uid://dy4g3wpl3rv6h" path="res://art/PotionSprites/Potions0001.png" id="2_sw11f"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31pdf"]
 radius = 11.1
 height = 36.1
@@ -23,3 +22,4 @@ texture = ExtResource("2_sw11f")
 shape = SubResource("CapsuleShape2D_31pdf")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

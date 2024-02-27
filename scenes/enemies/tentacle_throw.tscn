@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddilwvemxvn4d"]
+
+[ext_resource type="Texture2D" uid="uid://cm1c7vpffgrbj" path="res://art/Enemies/Concoctopus/ConcoctoThrow.png" id="1_6txhy"]
+[ext_resource type="Script" path="res://scenes/enemies/tentacle_throw.gd" id="1_xkuyb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nhwf0"]
+radius = 62.0
+height = 498.0
+
+[sub_resource type="Animation" id="Animation_lnf0c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7qebf"]
+resource_name = "throw"
+length = 1.66668
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ks07k"]
+_data = {
+"RESET": SubResource("Animation_lnf0c"),
+"throw": SubResource("Animation_7qebf")
+}
+
+[node name="Tentacle Throw" type="StaticBody2D"]
+scale = Vector2(0.35, 0.35)
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_xkuyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nhwf0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -700)
+texture = ExtResource("1_6txhy")
+hframes = 5
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ks07k")
+}
+
+[node name="ThrowTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="PotionThrowOrigin" type="Marker2D" parent="."]
+position = Vector2(0, -400)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timer_timeout"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctrsvul73a47h"]
+[gd_scene load_steps=6 format=3 uid="uid://ctrsvul73a47h"]
 
 [ext_resource type="PackedScene" uid="uid://bjeibckt2j8l1" path="res://scenes/rooms/room_002.tscn" id="1_6nylk"]
 [ext_resource type="PackedScene" uid="uid://b2o261tctyjcl" path="res://scenes/rooms/room_001.tscn" id="2_o28oi"]
+[ext_resource type="PackedScene" uid="uid://dwxi2ams24m26" path="res://scenes/player/player.tscn" id="3_vqdxe"]
+[ext_resource type="PackedScene" uid="uid://4u37vy7swd6f" path="res://scenes/enemies/skeleton.tscn" id="4_hiyu7"]
+[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="5_anlhi"]
 
 [node name="Test" type="Node2D"]
 
@@ -10,5 +13,10 @@ position = Vector2(3934, 0)
 
 [node name="room_001" parent="." instance=ExtResource("2_o28oi")]
 
-[editable path="room_2"]
-[editable path="room_001"]
+[node name="Player" parent="." instance=ExtResource("3_vqdxe")]
+position = Vector2(713, 1217)
+
+[node name="Skeleton" parent="." instance=ExtResource("4_hiyu7")]
+position = Vector2(2394, 1416)
+
+[node name="HUD" parent="." instance=ExtResource("5_anlhi")]

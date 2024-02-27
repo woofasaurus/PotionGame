@@ -1,0 +1,160 @@
+[gd_scene load_steps=13 format=3 uid="uid://rn1ovoetkcxl"]
+
+[ext_resource type="Script" path="res://scripts/Mimic.gd" id="2_jvkoc"]
+[ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/hud/popup_text.tscn" id="2_mff78"]
+[ext_resource type="Texture2D" uid="uid://c13jiculk4uor" path="res://art/Enemies/Mimic.png" id="3_a2in2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ael8i"]
+size = Vector2(228, 186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nrng"]
+size = Vector2(364, 295)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ii0j1"]
+radius = 22.0
+height = 63.16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvwxp"]
+radius = 27.682
+
+[sub_resource type="Animation" id="Animation_fyyyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1kaen"]
+resource_name = "attack"
+length = 0.833342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_1mu51"]
+resource_name = "idle"
+length = 0.166683
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k00qo"]
+_data = {
+"RESET": SubResource("Animation_fyyyu"),
+"attack": SubResource("Animation_1kaen"),
+"idle": SubResource("Animation_1mu51")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j8qd"]
+radius = 214.009
+
+[node name="Mimic" type="CharacterBody2D" groups=["breakable", "mobs"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 132
+collision_mask = 513
+script = ExtResource("2_jvkoc")
+metadata/_edit_group_ = true
+
+[node name="CollideArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -47)
+shape = SubResource("RectangleShape2D_ael8i")
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="InteractArea" type="CollisionShape2D" parent="InteractZone"]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_7nrng")
+
+[node name="PopupText" parent="." instance=ExtResource("2_mff78")]
+position = Vector2(0, -315)
+
+[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitboxShape" type="CollisionShape2D" parent="MobHitbox"]
+position = Vector2(0, -29.38)
+shape = SubResource("CapsuleShape2D_ii0j1")
+debug_color = Color(0, 0.647059, 0.254902, 0.419608)
+
+[node name="TimeTillLunge" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="TimeTillHurtbox" type="Timer" parent="."]
+wait_time = 0.667
+one_shot = true
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="PursueRange" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 34
+
+[node name="PursueRangeArea" type="CollisionShape2D" parent="PursueRange"]
+scale = Vector2(84.22, 84.22)
+shape = SubResource("CircleShape2D_lvwxp")
+debug_color = Color(0, 0.619608, 0.584314, 0.278431)
+
+[node name="FullSpriteSheet" type="Sprite2D" parent="."]
+texture = ExtResource("3_a2in2")
+offset = Vector2(0, -140)
+hframes = 3
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k00qo")
+}
+
+[node name="MobHurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="Hurtbox" type="CollisionShape2D" parent="MobHurtbox"]
+position = Vector2(0, -50)
+shape = SubResource("CircleShape2D_0j8qd")
+debug_color = Color(0.980392, 0, 0.396078, 0.419608)
+
+[connection signal="area_entered" from="InteractZone" to="." method="_on_interact_zone_area_entered"]
+[connection signal="area_exited" from="InteractZone" to="." method="_on_interact_zone_area_exited"]
+[connection signal="area_entered" from="MobHitbox" to="." method="_on_mob_hurtbox_area_entered"]
+[connection signal="timeout" from="TimeTillLunge" to="." method="_on_time_till_lunge_timeout"]
+[connection signal="timeout" from="TimeTillHurtbox" to="." method="_on_time_till_hurtbox_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="MobHurtbox" to="." method="_on_mob_hurtbox_area_entered"]

@@ -25,12 +25,12 @@ func _input(event):
 		$PopupText.hide()
 
 func _on_interact_zone_area_entered(area):
-	if area.get_name() == "PlayerHurtbox" and not used:
+	if area.get_name() == "PlayerHitbox" and not used:
 		$PopupText.show()
 		in_range = true
 
 func _on_interact_zone_area_exited(area):
-	if area.get_name() == "PlayerHurtbox":
+	if area.get_name() == "PlayerHitbox":
 		$PopupText.hide()
 		in_range = false
 		if open and not used:

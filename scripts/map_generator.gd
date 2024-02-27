@@ -39,7 +39,7 @@ func _generate_room_two(room_num):
 		self.floor_map.set_cell(0, new_pos, 0, atlas_coords)
 
 # Pool range is an array of the room numbers you want to include in the pool. num_rooms is how many rooms you wan tot generate.
-func _generate_rooms(pool_range: Array, num_rooms: int):
+func _generate_rooms(pool_range: Array, num_rooms: int, source_id: int):
 	var coord_offset = Vector2i(0, 0) # The x and y offset that all of the generated rooms have accumulated.
 	var last_index = -1 # Intialized at -1, just means that it's the first go.
 	var second_last_index = -2
@@ -65,7 +65,9 @@ func _generate_rooms(pool_range: Array, num_rooms: int):
 			var atlas_coords = room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
 			var new_pos = tile_pos + coord_offset
 
-			self.floor_map.set_cell(0, new_pos, 0, atlas_coords)
+			print(atlas_coords, " ", new_pos)
+
+			self.floor_map.set_cell(0, new_pos, source_id, atlas_coords)
 
 		coord_offset += Vector2i(room_instance.room_width + 1, room_instance.exit_height)
 		second_last_index = last_index
@@ -74,7 +76,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self._preload_rooms(11, 3)
-	self._generate_rooms(range(11), 50)
+	self._generate_rooms(range(3), 10, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

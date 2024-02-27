@@ -38,7 +38,7 @@ var aiming = false
 #endregion
 
 #region Inventory Variables
-var cash = 0
+var cash = 1000
 #region StartingInventory
 var inventory_wheel_scene= preload("res://scenes/hud/inventory_wheel.tscn")
 var inventory;
@@ -65,7 +65,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#region Thirst Checks
-	thirst -= delta*2
+	#thirst -= delta*2
 	if thirst > max_thirst:
 		thirst = max_thirst
 	if thirst < 0:
@@ -81,10 +81,10 @@ func _physics_process(delta):
 		pass
 	
 	if health != prev_health:
-		$PlayerHurtbox.set_collision_layer_value( 2, false )
-		$PlayerHurtbox.set_collision_layer_value( 6, true )
-		$FullSpriteSheet.hide()
 		if health < prev_health:
+			$PlayerHitbox.set_collision_layer_value( 2, false )
+			$PlayerHitbox.set_collision_layer_value( 6, true )
+			$FullSpriteSheet.hide()
 			$InvulnerableTimer.start()
 		health_update.emit(health)
 		prev_health = health
@@ -133,8 +133,8 @@ func velocity_to_key_press_direction():
 		facing = velocity.normalized() #preserves last direction of movement for dodging when stationary
 
 func begin_dodge(): #start dodge
-	$PlayerHurtbox.set_collision_layer_value( 2, false )
-	$PlayerHurtbox.set_collision_layer_value( 6, true )
+	$PlayerHitbox.set_collision_layer_value( 2, false )
+	$PlayerHitbox.set_collision_layer_value( 6, true )
 	set_collision_mask_value( 8, false ) 
 	velocity = facing * dodge_speed #increase velocity and dont change it until dodge is over
 	dodging = true;
@@ -142,8 +142,8 @@ func begin_dodge(): #start dodge
 
 func _on_dodge_timer_timeout(): #end dodge
 	dodging = false
-	$PlayerHurtbox.set_collision_layer_value( 2, true )
-	$PlayerHurtbox.set_collision_layer_value( 6, false )
+	$PlayerHitbox.set_collision_layer_value( 2, true )
+	$PlayerHitbox.set_collision_layer_value( 6, false )
 	set_collision_mask_value( 8, true )
 	$DodgeCooldown.start()
 	can_dodge = false
@@ -154,8 +154,8 @@ func _on_dodge_cooldown_timeout(): #can dodge again
 #endregion
 
 func _on_invulnerable_timeout(): #i-frames after being hit
-	$PlayerHurtbox.set_collision_layer_value( 2, true )
-	$PlayerHurtbox.set_collision_layer_value( 6, false )
+	$PlayerHitbox.set_collision_layer_value( 2, true )
+	$PlayerHitbox.set_collision_layer_value( 6, false )
 	$FullSpriteSheet.show()
 
 #region Potion Throw/Drink
@@ -169,7 +169,7 @@ func drink_potion():
 	var _drink_ref = inventory.pop_drink()
 	thirst += _drink_ref.satiation 
 	metabolizing.push_back(_drink_ref)
-	await get_tree().create_timer(180.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	metabolizing.pop_front().effect(self)
 #endregion
 
