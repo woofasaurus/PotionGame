@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var floor_map = $TileMap
 var start_room = preload("res://scenes/rooms/start_room.tscn")
+var boss_room = preload("res://scenes/rooms/boss_room.tscn")
 var torch  = preload("res://scenes/terrain/torch.tscn")
 
 var room_pool = []
@@ -62,6 +63,9 @@ func _spawn_enemies(spawn_pos, room_num: int, coord_offset=Vector2.ZERO):
 
 			monster_weight -= enemy_weights[spawnable_enemies[rand_num]]
 
+func _spawn_boss():
+	pass
+
 
 # Pool range is an array of the room numbers you want to include in the pool. num_rooms is how many rooms you wan tot generate.
 func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, source_id: int):
@@ -119,6 +123,24 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 		if my_queue.is_full():
 			my_queue.dequeue()
 		my_queue.push(rand_index)
+
+	# ---------------- BOSS ROOM ------------------------ #
+	var boss_room_instance = self.boss_room.instantiate()
+	tile_coords = boss_room_instance.get_node("TileMap").get_used_cells(0)
+
+	coord_offset += Vector2i(0, -boss_room_instance.entrance_height)
+		
+	# Sets all of the tiles in the tile map
+	for tile_pos in tile_coords:
+		var atlas_coords = boss_room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
+		var new_pos = tile_pos + coord_offset
+
+		self.floor_map.set_cell(0, new_pos, source_id, atlas_coords)
+
+	boss_room_instance.set_vars()
+	self._spawn_torches(boss_room_instance.torch_positions)
+	self._spawn_boss()
+	# ---------------- BOSS ROOM ------------------------ #
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
