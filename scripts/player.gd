@@ -67,7 +67,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#region Thirst Checks
-	#thirst -= delta*2
+	thirst -= delta
 	if thirst > max_thirst:
 		thirst = max_thirst
 	if thirst < 0:
@@ -78,8 +78,9 @@ func _physics_process(delta):
 	
 	#region == Health Checks ==
 	if health <= 0:
-		#dead.emit()
-		#queue_free()
+		dead.emit()
+		get_tree().call_group("mobs", "queue_free")
+		queue_free()
 		pass
 	
 	if health != prev_health:
@@ -181,7 +182,7 @@ func drink_potion():
 	var _drink_ref = inventory.pop_drink()
 	thirst += _drink_ref.satiation 
 	metabolizing.push_back(_drink_ref)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(180.0).timeout
 	metabolizing.pop_front().effect(self)
 #endregion
 

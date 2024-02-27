@@ -6,19 +6,19 @@ var loot_count = 0;
 
 var chest_reference = preload("res://scenes/chest.tscn")
 #region LootArrays
-var mundane_array = [preload("res://potions/water.tres")]
+var mundane_array = [preload("res://potions/water.tres"), preload("res://potions/milk.tres"), preload("res://potions/empty_potion.tres")]
 
-var common_array = [preload("res://potions/health_potion.tres"), preload("res://potions/fire_breathing.tres"), preload("res://potions/water.tres"), preload("res://potions/empty_potion.tres"), preload("res://potions/slowness.tres")]
+var common_array = [preload("res://potions/health_potion.tres"), preload("res://potions/water.tres"), preload("res://potions/empty_potion.tres"), preload("res://potions/slowness.tres")]
 
-var uncommon_array = [preload("res://potions/water.tres")]
+var uncommon_array = [preload("res://potions/slowness.tres"), preload("res://potions/health_potion.tres"), preload("res://potions/water.tres")]
 
-var rare_array = [preload("res://potions/water.tres")]
+var rare_array = [preload("res://potions/pot_of_greed.tres"), preload("res://potions/fire_breathing.tres"), preload("res://potions/potion_of_misery.tres"), preload("res://potions/potion_of_potion_seller.tres")]
 
-var epic_array = [preload("res://potions/water.tres")]
+var epic_array = [preload("res://potions/pot_of_greed.tres"), preload("res://potions/pitching_potion.tres"), preload("res://potions/potion_of_potion_seller.tres")]
 
-var legendary_array = [preload("res://potions/pitching_potion.tres"), preload("res://potions/tankiness.tres"), preload("res://potions/swiftness_potion.tres")]
+var legendary_array = [preload("res://potions/elusiveness.tres"), preload("res://potions/melee_potion.tres"), preload("res://potions/pitching_potion.tres"), preload("res://potions/tankiness.tres"), preload("res://potions/swiftness_potion.tres")]
 
-var unique_array = [preload("res://potions/water.tres")]
+var unique_array = [preload("res://potions/the_strongest_potion.tres")]
 #endregion
 
 func register_player(_player):

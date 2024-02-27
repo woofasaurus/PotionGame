@@ -55,4 +55,5 @@ func effect(_player):
 				loot.set_loot("epic")
 				loot.global_position = _player.position
 				_player.get_tree().current_scene.get_node("SortingLayer").add_child(loot)
-		
+		"Potion of Elusiveness":
+			_player.get_node("DodgeCooldown").wait_time *= 0.5
