@@ -25,21 +25,6 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 	var my_queue = Queue.new(max_consecutive)
 	var room_instance = self.room_pool[0].instantiate() # Just here so that the if condition can execute and doesn't give errors.
 	
-	# ---------------- STARTINNG ROOM ------------------------ #
-	var start_room_instance = self.start_room.instantiate()
-	var tile_coords = start_room_instance.get_node("TileMap").get_used_cells(0)
-		
-	# Sets all of the tiles in the tile map
-	for tile_pos in tile_coords:
-		var atlas_coords = start_room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
-
-		self.floor_map.set_cell(0, tile_pos, source_id, atlas_coords)
-
-	# Computes the offset 
-	coord_offset += Vector2i(start_room_instance.room_width + 1, start_room_instance.exit_height)
-	# ---------------- STARTINNG ROOM ------------------------ #
-
-
 	for i in range(num_rooms):
 		var index_pool = pool_range.duplicate()
 		
@@ -51,10 +36,15 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 
 		var rand_index = index_pool.pick_random()
 
-		room_instance = self.room_pool[rand_index].instantiate()
-		tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
+		if i == 0:
+			room_instance = self.start_room.instantiate()
+		else:
+			room_instance = self.room_pool[rand_index].instantiate()
+		var tile_coords = room_instance.get_node("TileMap").get_used_cells(0)
 
-		coord_offset += Vector2i(0, -room_instance.entrance_height)
+		# Adds the offset
+		if not my_queue.is_empty():
+			coord_offset += Vector2i(0, -room_instance.entrance_height)
 			
 		# Sets all of the tiles in the tile map
 		for tile_pos in tile_coords:
