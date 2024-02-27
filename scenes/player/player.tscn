@@ -143,6 +143,9 @@ position = Vector2(0, -87.85)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="PotionThrowOrigin" type="Marker2D" parent="."]
+position = Vector2(0, -60)
+
 [connection signal="timeout" from="DodgeTimer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
 [connection signal="timeout" from="InvulnerableTimer" to="." method="_on_invulnerable_timeout"]
