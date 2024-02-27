@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://tbywgct1gw6u"]
 
-[ext_resource type="Script" path="res://scripts/room.gd" id="1_hdtrx"]
+[ext_resource type="Script" path="res://scripts/rooms/room_008.gd" id="1_kk6q8"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_jvth6"]
 
 [node name="room_008" type="Node2D"]
-script = ExtResource("1_hdtrx")
+script = ExtResource("1_kk6q8")
 entrance_height = 3
 exit_height = 3
 room_width = 33

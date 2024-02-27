@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://4u37vy7swd6f"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_u66c2"]
-[ext_resource type="Texture2D" uid="uid://hjepr5kw5mlr" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
+[ext_resource type="Texture2D" uid="uid://cj1grk4l16flk" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0lk2"]
 radius = 9.47568
