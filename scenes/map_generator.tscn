@@ -8,8 +8,6 @@
 script = ExtResource("1_ku30c")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(99.0001, -310)
-scale = Vector2(8.38, 8.38)
 tile_set = ExtResource("2_i08ma")
 format = 2
 

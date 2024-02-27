@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwxi2ams24m26"]
+[gd_scene load_steps=13 format=3 uid="uid://dwxi2ams24m26"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_viow5"]
+[ext_resource type="Texture2D" uid="uid://cj608r0fvwv2g" path="res://art/MCAssets/Reticle.png" id="4_nimus"]
 [ext_resource type="Texture2D" uid="uid://1seup3hfk5co" path="res://art/MCAssets/FullSheet.png" id="6_jbg3w"]
 [ext_resource type="Texture2D" uid="uid://cjpom10gseslg" path="res://art/MCAssets/FullSheetNormals.png" id="7_ubt1b"]
 
@@ -96,7 +97,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 641
+collision_mask = 129
 script = ExtResource("1_viow5")
 metadata/_edit_group_ = true
 
@@ -144,7 +145,12 @@ position = Vector2(0, -87.85)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PotionThrowOrigin" type="Marker2D" parent="."]
-position = Vector2(0, -60)
+position = Vector2(0, -50)
+
+[node name="AimReticle" type="Sprite2D" parent="PotionThrowOrigin"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_nimus")
+offset = Vector2(400, 0)
 
 [connection signal="timeout" from="DodgeTimer" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
