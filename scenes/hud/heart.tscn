@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0x5x8to71r7o"]
+
+[ext_resource type="Texture2D" uid="uid://di3dj6cqdglem" path="res://art/HUD/PotionGame.png" id="1_xjdqc"]
+[ext_resource type="Script" path="res://Heart.gd" id="2_yjxyf"]
+
+[node name="Heart" type="Sprite2D"]
+texture = ExtResource("1_xjdqc")
+hframes = 3
+script = ExtResource("2_yjxyf")
