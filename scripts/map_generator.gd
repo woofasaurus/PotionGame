@@ -75,7 +75,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int, source_id: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self._preload_rooms(11, 3)
+	self._preload_rooms(3, 3)
 	self._generate_rooms(range(3), 10, 2)
 
 
