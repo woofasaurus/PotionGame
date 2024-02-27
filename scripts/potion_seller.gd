@@ -11,17 +11,22 @@ func _ready():
 	random_animation($ArmAnimation1)
 	random_animation($ArmAnimation2)
 	var potion_one = for_sale_scene.instantiate()
-	potion_one.set_variables(preload("res://potions/health_potion.tres"), 50)
+	potion_one.set_variables(preload("res://potions/melee_potion.tres"), 0)
 	potion_one.position = $Potion1.position
 	var potion_two = for_sale_scene.instantiate()
 	add_child(potion_one)
-	potion_two.set_variables(preload("res://potions/slowness.tres"), 10)
+	potion_two.set_variables(preload("res://potions/slowness.tres"), 0)
 	potion_two.position = $Potion2.position
 	var potion_three = for_sale_scene.instantiate()
 	add_child(potion_two)
-	potion_three.set_variables(preload("res://potions/fire_breathing.tres"), 100)
+	potion_three.set_variables(preload("res://potions/potion_of_misery.tres"), 0)
 	potion_three.position = $Potion3.position
 	add_child(potion_three)
+	var potion_four = for_sale_scene.instantiate()
+	add_child(potion_four)
+	potion_four.set_variables(preload("res://potions/the_strongest_potion.tres"), 99999)
+	potion_four.position = $Potion4.position
+	add_child(potion_four)
 
 func random_animation(_arm):
 	var roll = randi() % num_arm_animations

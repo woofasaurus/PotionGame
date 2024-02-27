@@ -3,12 +3,11 @@
 [ext_resource type="Script" path="res://scripts/potion.gd" id="1_1ixml"]
 [ext_resource type="Texture2D" uid="uid://d3ybeb04y58yj" path="res://art/PotionSprites/Potions0003.png" id="2_tb4se"]
 
-
 [resource]
 script = ExtResource("1_1ixml")
 name = "Potion of Fire Breathing"
 rarity = "uncommon"
-description = ""
+description = "At least it's halal"
 satiation = 5
 texture = ExtResource("2_tb4se")
 color = Color(0.831373, 0.478431, 0.25098, 0.392157)

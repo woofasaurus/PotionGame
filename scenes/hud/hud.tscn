@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c45vcfgd75wj4"]
+[gd_scene load_steps=8 format=3 uid="uid://c45vcfgd75wj4"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_vnduc"]
 [ext_resource type="Texture2D" uid="uid://dm05u00137q18" path="res://art/WhiteVignette.png" id="2_4xbmj"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="2_pr86w"]
+[ext_resource type="PackedScene" uid="uid://fnxgqjblgq0g" path="res://health_display.tscn" id="4_du2tw"]
+[ext_resource type="Texture2D" uid="uid://cr6nbxf3m2266" path="res://art/HUD/Gold.png" id="4_jk76j"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_nwvch"]
 action = &"start_game"
@@ -107,9 +109,16 @@ theme_override_font_sizes/font_size = 64
 text = "1"
 horizontal_alignment = 2
 
+[node name="GoldIcon" type="Sprite2D" parent="."]
+position = Vector2(187, 360)
+scale = Vector2(0.535714, 0.535714)
+texture = ExtResource("4_jk76j")
+
 [node name="Cash" type="Label" parent="."]
-offset_right = 192.0
-offset_bottom = 78.0
+offset_left = 300.0
+offset_top = 320.0
+offset_right = 592.0
+offset_bottom = 398.0
 theme_override_fonts/font = ExtResource("2_pr86w")
 theme_override_font_sizes/font_size = 64
 text = "0"
@@ -131,6 +140,9 @@ theme_override_font_sizes/font_size = 40
 text = "Select"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthDisplay" parent="." instance=ExtResource("4_du2tw")]
+position = Vector2(159, 165)
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

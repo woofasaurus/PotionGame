@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" path="res://HealthDisplay.gd" id="1_3op6x"]
 
-[node name="HealthDisplay" type="CanvasLayer"]
+[node name="HealthDisplay" type="Node2D"]
+position = Vector2(352, 234)
 script = ExtResource("1_3op6x")

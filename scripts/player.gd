@@ -35,6 +35,8 @@ var throw_speed = 700;
 var potion_scene = preload("res://scenes/projectiles/potion_projectile.tscn")
 var metabolizing = []
 var aiming = false
+var melee = false
+var melee_scale = 1
 #endregion
 
 #region Inventory Variables
@@ -70,8 +72,8 @@ func _physics_process(delta):
 		thirst = max_thirst
 	if thirst < 0:
 		thirst = 0
-		health -= delta
-		health_update.emit(health)
+		health -= 1
+		health_update.emit(health, max_health)
 	#endregion
 	
 	#region == Health Checks ==
@@ -86,7 +88,7 @@ func _physics_process(delta):
 			$PlayerHitbox.set_collision_layer_value( 6, true )
 			$FullSpriteSheet.hide()
 			$InvulnerableTimer.start()
-		health_update.emit(health)
+		health_update.emit(health, max_health)
 		prev_health = health
 #endregion
 	
@@ -164,6 +166,16 @@ func throw_potion(_potion_reference):
 	potion_projectile.global_position = $PotionThrowOrigin.global_position
 	potion_projectile.set_variables(_potion_reference, (get_global_mouse_position() - $PotionThrowOrigin.global_position), throw_speed)
 	get_tree().current_scene.add_child(potion_projectile)
+	
+	if melee:
+		var slash = preload("res://scenes/projectiles/slash.tscn").instantiate()
+		slash.global_position = $PotionThrowOrigin.global_position
+		slash.rotation = (get_global_mouse_position() - $PotionThrowOrigin.global_position).angle()
+		slash.get_node("AnimatedSprite2D").flip_v = $FullSpriteSheet.flip_h
+		slash.set_collision_mask_value( 2, false )
+		slash.set_collision_mask_value( 3, true )
+		slash.scale *= melee_scale
+		get_tree().current_scene.add_child(slash)
 
 func drink_potion():
 	var _drink_ref = inventory.pop_drink()

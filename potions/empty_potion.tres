@@ -3,12 +3,11 @@
 [ext_resource type="Script" path="res://scripts/potion.gd" id="1_ubvpa"]
 [ext_resource type="Texture2D" uid="uid://dy4g3wpl3rv6h" path="res://art/PotionSprites/Potions0001.png" id="2_dkug4"]
 
-
 [resource]
 script = ExtResource("1_ubvpa")
 name = "Empty Potion"
 rarity = "mundane"
+description = "A potion of air..."
 satiation = 0
-id = 1
 texture = ExtResource("2_dkug4")
 color = Color(0, 0, 0, 0)

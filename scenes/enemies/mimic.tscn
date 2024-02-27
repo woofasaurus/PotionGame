@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://rn1ovoetkcxl"]
+[gd_scene load_steps=14 format=3 uid="uid://rn1ovoetkcxl"]
 
 [ext_resource type="Script" path="res://scripts/Mimic.gd" id="2_jvkoc"]
 [ext_resource type="PackedScene" uid="uid://owhuivophvh8" path="res://scenes/hud/popup_text.tscn" id="2_mff78"]
 [ext_resource type="Texture2D" uid="uid://c13jiculk4uor" path="res://art/Enemies/Mimic.png" id="3_a2in2"]
+[ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="4_1pu2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ael8i"]
 size = Vector2(228, 186)
@@ -81,6 +82,8 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 132
 collision_mask = 513
 script = ExtResource("2_jvkoc")
+speed = null
+max_health = null
 metadata/_edit_group_ = true
 
 [node name="CollideArea" type="CollisionShape2D" parent="."]
@@ -148,6 +151,28 @@ collision_mask = 2
 position = Vector2(0, -50)
 shape = SubResource("CircleShape2D_0j8qd")
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
+
+[node name="HealthIndicatorPosition" type="Marker2D" parent="."]
+position = Vector2(0, -250)
+
+[node name="HealthIndicatorText" type="Label" parent="HealthIndicatorPosition"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_1pu2s")
+theme_override_font_sizes/font_size = 32
+text = "
+"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="InteractZone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="InteractZone" to="." method="_on_interact_zone_area_exited"]

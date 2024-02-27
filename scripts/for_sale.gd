@@ -1,5 +1,8 @@
 extends Area2D
 
+var hover_text_scene = preload("res://scenes/hud/hover_text.tscn")
+var hover_text
+
 var popup_scene = preload("res://scenes/hud/popup_text.tscn")
 var potion_reference
 var purchaseable = false
@@ -31,4 +34,14 @@ func _input(event):
 			player.cash -= price
 			player.cash_update.emit(player.cash)
 			player.inventory.append(potion_reference)
-			player.inventory_update.emit(player.inventory)
+			player.inventory_update.emit(player.inventory)	
+
+func _on_hover_area_mouse_entered():
+	print("HOVER")
+	hover_text = hover_text_scene.instantiate()
+	hover_text.set_text(potion_reference.name, potion_reference.description)
+	hover_text.scale = scale*2
+	add_child(hover_text)
+
+func _on_hover_area_mouse_exited():
+	hover_text.queue_free()

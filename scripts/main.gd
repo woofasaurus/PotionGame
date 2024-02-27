@@ -40,10 +40,10 @@ func spawn_goblins(number):
 	for i in number:
 		var roll = randi() % 100
 		var mob = mob_scene.instantiate();
-		if roll < 100:
+		if roll < 50:
 			print ("SKELER")
 			mob = skeleton_scene.instantiate();
-			if roll < 100:
+			if roll < 10:
 				print ("NECRO")
 				mob = necromancer_scene.instantiate()
 		mob.position = Vector2(randi() % 100 + 100, randi() % 700 + 300) #Spawn randomly btwn (100,300) and (1800, 1000)

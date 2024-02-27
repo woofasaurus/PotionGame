@@ -3,12 +3,11 @@
 [ext_resource type="Script" path="res://scripts/potion.gd" id="1_xg0i4"]
 [ext_resource type="Texture2D" uid="uid://cj46yk0a8ko8y" path="res://art/PotionSprites/Potions0002.png" id="2_ah3jc"]
 
-
 [resource]
 script = ExtResource("1_xg0i4")
 name = "Health Potion"
 rarity = "common"
-description = ""
+description = "Old reliable"
 satiation = 10
 texture = ExtResource("2_ah3jc")
 color = Color(0.815686, 0.25098, 0.219608, 0.392157)

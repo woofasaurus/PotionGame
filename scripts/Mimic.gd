@@ -15,7 +15,7 @@ func _ready():
 	$MobHurtbox.monitorable = false
 	current_state = "idle"
 	speed = 1500
-	max_health = 200
+	max_health = 500
 	health = max_health
 
 func _input(event):
@@ -58,9 +58,10 @@ func attack():
 
 func _physics_process(_delta):
 	if health <= 0:
-		dead.emit(position, "common")
-		
+		drop_loot()
 		queue_free()
+	if health != prev_health:
+		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
 	
 	# print(current_state)
 	match current_state:
@@ -112,3 +113,28 @@ func _on_pursue_range_area_exited(area):
 		target = null
 		current_state = "idle"
 #endregion
+
+func drop_loot():
+	var droproll = randi() % 100
+	
+	var loot
+	loot = loot_scene.instantiate()
+	loot.set_loot("mundane")
+	loot.global_position = position
+	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+	$"/root/Global".loot_count += 1
+	if droproll < 5:
+		loot.set_loot("epic")
+	elif droproll < 25:
+		loot.set_loot("rare")
+	elif droproll < 50:
+		loot.set_loot("uncommon")
+	if droproll < 75: 
+		loot.set_loot("common")
+	
+	for i in range (10):
+		var gold = loot_scene.instantiate()
+		gold.set_loot("gold")
+		gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)
+		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+		$"/root/Global".loot_count += 1

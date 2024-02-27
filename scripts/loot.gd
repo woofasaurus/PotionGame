@@ -10,7 +10,6 @@ func set_loot(_rarity, _special = "default"): #returns loot of requested type
 	if _rarity == "gold":
 		is_gold = true;
 	else:
-		$"/root/Global".loot_count -= 1
 		potion_reference = $"/root/Global".get_loot(_rarity, _special)
 		$Sprite2D.texture = potion_reference.texture
 

@@ -23,8 +23,8 @@ func show_game_over():
 	await get_tree().create_timer(0.5).timeout
 	$StartButton.show()
 
-func update_health(health):
-	$ScoreLabel.text = str(health)
+func update_health(_health, _max_health):
+	$HealthDisplay.adjust_hp(_health, _max_health)
 
 func update_goblin_count(goblins):
 	$GoblinCount.text = str(goblins)
@@ -45,7 +45,7 @@ func update_inventory(inventory, selection): #called by inventory_update signal 
 
 func _on_start_button_pressed():
 	$StartButton.hide()
-	update_health(400)
+	update_health(3,3)
 	start_game.emit()
 
 func _on_message_timer_timeout():

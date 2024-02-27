@@ -242,5 +242,8 @@ position = Vector2(0, -200)
 [node name="Potion3" type="Marker2D" parent="."]
 position = Vector2(200, -200)
 
+[node name="Potion4" type="Marker2D" parent="."]
+position = Vector2(530, -200)
+
 [connection signal="animation_changed" from="ArmAnimation1" to="." method="_on_arm_animation_1_animation_changed"]
 [connection signal="animation_changed" from="ArmAnimation2" to="." method="_on_arm_animation_2_animation_changed"]

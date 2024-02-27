@@ -10,7 +10,7 @@ height = 36.0949
 [node name="Arrow" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_f7dqr")
 metadata/_edit_group_ = true
 

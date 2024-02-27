@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal free
 
+var hover_text_scene = preload("res://scenes/hud/hover_text.tscn")
+var hover_text
 var player
 var potion1
 var potion2
@@ -43,3 +45,30 @@ func _on_option_3_pressed():
 	player.inventory_update.emit(player.inventory)
 	free.emit()
 	queue_free()
+
+
+
+func _on_option_1_mouse_entered():
+	hover_text = hover_text_scene.instantiate()
+	hover_text.set_text(potion1.name, potion1.description)
+	add_child(hover_text)
+
+func _on_option_1_mouse_exited():
+	hover_text.queue_free()
+
+func _on_option_2_mouse_entered():
+	hover_text = hover_text_scene.instantiate()
+	hover_text.set_text(potion2.name, potion2.description)
+	add_child(hover_text)
+
+func _on_option_2_mouse_exited():
+	hover_text.queue_free()
+
+
+func _on_option_3_mouse_entered():
+	hover_text = hover_text_scene.instantiate()
+	hover_text.set_text(potion3.name, potion3.description)
+	add_child(hover_text)
+
+func _on_option_3_mouse_exited():
+	hover_text.queue_free()

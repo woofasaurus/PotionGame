@@ -35,3 +35,24 @@ func effect(_player):
 			_player.speed -= 100
 			_player.max_health += 1
 			_player.health += 1
+		"The Strongest Potion":
+			_player.health = -9999
+		"Potion of Potion Seller":
+			var potion_seller = load("res://scenes/npcs/potion_seller/potion_seller.tscn").instantiate()
+			potion_seller.position = _player.position + Vector2(0,-400)
+			potion_seller.scale *= 0.34
+			_player.get_tree().current_scene.get_node("SortingLayer").add_child(potion_seller)
+		"Potion of Misery":
+			_player.health -= 1
+		"Melee Potion":
+			if _player.melee == true:
+				_player.melee_scale += 1
+			else:
+				_player.melee = true;
+		"Potion of Greed":
+			for i in range (2):
+				var loot = load("res://scenes/loot.tscn").instantiate()
+				loot.set_loot("epic")
+				loot.global_position = _player.position
+				_player.get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+		

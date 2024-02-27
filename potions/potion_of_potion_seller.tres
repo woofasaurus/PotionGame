@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://duwm42nol2xp4"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_767f3"]
+[ext_resource type="Texture2D" uid="uid://ckra5ep7qbntr" path="res://art/PotionSprites/Potions 0018.png" id="2_h2hah"]
+
+[resource]
+script = ExtResource("1_767f3")
+name = "Potion of Potion Seller"
+rarity = "epic"
+description = "For when you need to phone a friend"
+satiation = 10
+texture = ExtResource("2_h2hah")
+color = Color(0.458824, 0.458824, 0.458824, 0.392157)

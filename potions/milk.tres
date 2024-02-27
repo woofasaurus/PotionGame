@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://duvna20c54q1b"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_6x0gn"]
+[ext_resource type="Texture2D" uid="uid://vko8ndwntdnt" path="res://art/PotionSprites/Potions 0039.png" id="2_tcu5u"]
+
+[resource]
+script = ExtResource("1_6x0gn")
+name = "Potion of Milk"
+rarity = "mundane"
+description = "Good for your bones."
+satiation = 15
+texture = ExtResource("2_tcu5u")
+color = Color(1, 1, 1, 1)

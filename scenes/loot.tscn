@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://idrh8aajh4fd"]
 
 [ext_resource type="Script" path="res://scripts/loot.gd" id="1_bfk0x"]
-[ext_resource type="Texture2D" uid="uid://c57r3u6x83khg" path="res://art/Placeholder/Gold.png" id="2_w1gel"]
+[ext_resource type="Texture2D" uid="uid://cr6nbxf3m2266" path="res://art/HUD/Gold.png" id="2_xbi4u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mn8cj"]
 radius = 32.0
@@ -14,7 +14,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.32, 0.32)
-texture = ExtResource("2_w1gel")
+texture = ExtResource("2_xbi4u")
 offset = Vector2(0, 12.71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

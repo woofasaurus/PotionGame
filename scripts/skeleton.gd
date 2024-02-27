@@ -8,6 +8,11 @@ var arrow_scene = preload("res://scenes/projectiles/arrow.tscn")
 var arrow_fired = false
 var flee = false
 
+func _ready():
+	max_health = 1000;
+	health = max_health;
+	speed = 300;
+
 func idle():
 	velocity = Vector2.ZERO
 
@@ -30,9 +35,10 @@ func _physics_process(_delta):
 	# print(current_state)
 	
 	if health <= 0:
-		dead.emit(position, "common")
-		
+		drop_loot()
 		queue_free()
+	if health != prev_health:
+		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
 	
 	if self.spawned:
 		match current_state:
@@ -120,3 +126,28 @@ func _on_attack_range_area_exited(area):
 	if area.get_name() == "PlayerHitbox":
 		target = area.owner
 		current_state = "pursuing"
+
+func drop_loot():
+	var droproll = randi() % 100
+	
+	var loot
+	loot = loot_scene.instantiate()
+	loot.global_position = position
+	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+	loot.set_loot("mundane")
+	$"/root/Global".loot_count += 1
+	if droproll < 5:
+		loot.set_loot("epic")
+	elif droproll < 25:
+		loot.set_loot("rare")
+	elif droproll < 50:
+		loot.set_loot("uncommon")
+	if droproll < 75: 
+		loot.set_loot("common")
+	
+	for i in range (3):
+		var gold = loot_scene.instantiate()
+		gold.set_loot("gold")
+		gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)
+		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+		$"/root/Global".loot_count += 1

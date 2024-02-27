@@ -48,6 +48,12 @@ grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("2_2cfj5")
 
+[connection signal="mouse_entered" from="Option1" to="." method="_on_option_1_mouse_entered"]
+[connection signal="mouse_exited" from="Option1" to="." method="_on_option_1_mouse_exited"]
 [connection signal="pressed" from="Option1" to="." method="_on_option_1_pressed"]
+[connection signal="mouse_entered" from="Option2" to="." method="_on_option_2_mouse_entered"]
+[connection signal="mouse_exited" from="Option2" to="." method="_on_option_2_mouse_exited"]
 [connection signal="pressed" from="Option2" to="." method="_on_option_2_pressed"]
+[connection signal="mouse_entered" from="Option3" to="." method="_on_option_3_mouse_entered"]
+[connection signal="mouse_exited" from="Option3" to="." method="_on_option_3_mouse_exited"]
 [connection signal="pressed" from="Option3" to="." method="_on_option_3_pressed"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://bxik0ov43eoon"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_ebixj"]
+[ext_resource type="Texture2D" uid="uid://gu0vsc35p24i" path="res://art/PotionSprites/Potions 0005.png" id="2_ptnho"]
+
+[resource]
+script = ExtResource("1_ebixj")
+name = "Potion of Greed"
+rarity = "epic"
+description = "Draw 2"
+satiation = null
+texture = ExtResource("2_ptnho")
+color = Color(0.368627, 0.721569, 0.27451, 0.392157)
