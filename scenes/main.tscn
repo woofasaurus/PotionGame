@@ -26,10 +26,6 @@ scale = Vector2(0.34, 0.34)
 wait_time = 30.0
 autostart = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_gg0tf")
-autoplay = true
-
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="GoblinTimer" to="." method="_on_goblin_timer_timeout"]
 

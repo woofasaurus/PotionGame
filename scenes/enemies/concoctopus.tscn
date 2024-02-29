@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://deqs063c8ujmo"]
 
-[ext_resource type="Script" path="res://Concoctopus.gd" id="1_t6415"]
+[ext_resource type="Script" path="res://scripts/Concoctopus.gd" id="1_t6415"]
 [ext_resource type="Texture2D" uid="uid://c0ld5xmjfctc3" path="res://art/Enemies/Concoctopus/ConcoctoHead.png" id="2_eoouo"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="3_dnrj1"]
 

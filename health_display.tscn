@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fnxgqjblgq0g"]
 
-[ext_resource type="Script" path="res://HealthDisplay.gd" id="1_3op6x"]
+[ext_resource type="Script" path="res://scripts/HealthDisplay.gd" id="1_3op6x"]
 
 [node name="HealthDisplay" type="Node2D"]
 position = Vector2(352, 234)
