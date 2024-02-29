@@ -40,7 +40,7 @@ var melee_scale = 1
 #endregion
 
 #region Inventory Variables
-var cash = 1000
+var cash = 100000
 #region StartingInventory
 var inventory_wheel_scene= preload("res://scenes/hud/inventory_wheel.tscn")
 var inventory;
@@ -78,9 +78,9 @@ func _physics_process(delta):
 	
 	#region == Health Checks ==
 	if health <= 0:
-		dead.emit()
-		get_tree().call_group("mobs", "queue_free")
-		queue_free()
+	#	dead.emit()
+	#	get_tree().call_group("mobs", "queue_free")
+	#	queue_free()
 		pass
 	
 	if health != prev_health:
@@ -182,7 +182,7 @@ func drink_potion():
 	var _drink_ref = inventory.pop_drink()
 	thirst += _drink_ref.satiation 
 	metabolizing.push_back(_drink_ref)
-	await get_tree().create_timer(180.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	metabolizing.pop_front().effect(self)
 #endregion
 

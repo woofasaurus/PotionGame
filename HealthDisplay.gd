@@ -8,18 +8,14 @@ var heart_array = []
 var spacing = 100
 
 func _ready():
-	print("READY")
 	adjust_hp(3, 3)
 
 func display_health():
-	print("DISPLAY")
 	var hp = health
 	var count = 0
 	for i in heart_array:
-		print("i: " + str(i) + " count " + str(count) + " hp: " + str(hp) + " max: " + str(max_health))
 		i.set_zero()
 		hp = i.add_hp(hp)
-		print("hp: " + str(hp))
 		i.position = Vector2(1,0)*spacing*count
 		count += 1
 

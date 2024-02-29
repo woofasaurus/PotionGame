@@ -14,11 +14,12 @@ func set_loot(_rarity, _special = "default"): #returns loot of requested type
 		$Sprite2D.texture = potion_reference.texture
 
 func _on_area_entered(area):
-	if not is_gold and area.get_name() == "PlayerHurtbox":
-		area.owner.inventory.append(potion_reference)
-		area.owner.inventory_update.emit(area.owner.inventory)
-	elif is_gold:
-		area.owner.cash += 5
-		area.owner.cash_update.emit(area.owner.cash)
-	$"/root/Global".loot_count -= 1
-	queue_free()
+	if area.get_name() == "PlayerHitbox":
+		if is_gold:
+			area.owner.cash += 5
+			area.owner.cash_update.emit(area.owner.cash)
+		else:
+			area.owner.inventory.append(potion_reference)
+			area.owner.inventory_update.emit(area.owner.inventory)
+		$"/root/Global".loot_count -= 1
+		queue_free()

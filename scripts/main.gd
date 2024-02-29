@@ -19,7 +19,7 @@ func game_over(): #Called when player is dead
 func new_game(): #Called by start button
 	$HUD.show_message("Get Ready")
 	#Clear existing mobs
-	get_tree().call_group("mobs", "queue_free")
+	#get_tree().call_group("mobs", "queue_free") WE ARE NOT ALLOWED TO DELETE THIS LINE. THIS LINE HAS TO SIT HERE AND THINK ABOUT WHAT ITS DONE. FUCK THIS LINE.
 	
 	var concoctopus = concoctopus_scene.instantiate();
 	concoctopus.position = Vector2(20000,500)
@@ -59,4 +59,5 @@ func decrement_goblin_count(_position, _rarity):
 	goblin_count -= 1
 
 func _on_goblin_timer_timeout():
-	spawn_goblins(wave_size)
+	#spawn_goblins(wave_size)
+	pass

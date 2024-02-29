@@ -12,6 +12,7 @@ func _ready():
 	$CollisionShape2D.disabled = false
 	max_health = 10000;
 	health = max_health;
+	prev_health = health
 	
 func idle():
 	$AttackTimer.stop()
@@ -30,6 +31,7 @@ func _physics_process(_delta):
 		corpse = true
 	if health != prev_health:
 		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
+		prev_health = health
 	
 	if self.spawned and not corpse:
 		match current_state:
@@ -101,17 +103,17 @@ func drop_loot():
 	loot = loot_scene.instantiate()
 	loot.global_position = position
 	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
-	loot.set_loot("legendaries")
+	loot.set_loot("legendary")
 	$"/root/Global".loot_count += 1
 	
 	for i in range (100):
 		var gold = loot_scene.instantiate()
+		gold.global_position = position - Vector2(randi()%800 - 400, randi() % 800 - 400)
+		get_tree().current_scene.get_node("SortingLayer").add_child(gold)
 		gold.set_loot("gold")
-		gold.global_position = position - Vector2(randi()%400 - 200, randi() % 400 + 200)
-		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
 		$"/root/Global".loot_count += 1
 	
-	for i in range (100):
+	for i in range (10):
 		var chest = $"/root/Global".chest_reference.instantiate()
 		chest.global_position = position
-		$SortingLayer.add_child(chest)
+		get_tree().current_scene.get_node("SortingLayer").add_child(chest)

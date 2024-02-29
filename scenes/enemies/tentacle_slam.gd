@@ -11,7 +11,7 @@ func _on_slam_timer_timeout():
 
 func _on_hurtbox_area_entered(area):
 	if area.get_name() == "PlayerHitbox":
-		area.owner.health -= 100
+		area.owner.health -= 1
 
 func _on_slam_end_timeout():
 	$Hurtbox.monitoring = false

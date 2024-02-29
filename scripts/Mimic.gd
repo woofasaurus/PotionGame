@@ -17,6 +17,7 @@ func _ready():
 	speed = 1500
 	max_health = 500
 	health = max_health
+	prev_health = health
 
 func _input(event):
 	if event.is_action_pressed("interact") and in_range and not open:
@@ -62,6 +63,7 @@ func _physics_process(_delta):
 		queue_free()
 	if health != prev_health:
 		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
+		prev_health = health
 	
 	# print(current_state)
 	match current_state:
@@ -119,9 +121,9 @@ func drop_loot():
 	
 	var loot
 	loot = loot_scene.instantiate()
-	loot.set_loot("mundane")
 	loot.global_position = position
 	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+	loot.set_loot("mundane")
 	$"/root/Global".loot_count += 1
 	if droproll < 5:
 		loot.set_loot("epic")
@@ -134,7 +136,7 @@ func drop_loot():
 	
 	for i in range (10):
 		var gold = loot_scene.instantiate()
+		gold.global_position = position - Vector2(randi()%400 - 200, randi() % 300 - 150)
+		get_tree().current_scene.get_node("SortingLayer").add_child(gold)
 		gold.set_loot("gold")
-		gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)
-		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
 		$"/root/Global".loot_count += 1

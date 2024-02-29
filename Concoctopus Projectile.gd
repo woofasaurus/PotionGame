@@ -20,7 +20,7 @@ func set_variables(_direction, _velocity):
 
 func _on_area_entered(area):
 	if area.get_name() == "PlayerHitbox":
-		area.owner.health -= 100
+		area.owner.health -= 1
 	queue_free()
 
 func _on_body_entered(body):

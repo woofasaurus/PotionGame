@@ -45,6 +45,7 @@ func _physics_process(_delta):
 		queue_free()
 	if health != prev_health:
 		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
+		prev_health = health
 
 	# print(current_state)
 	match current_state:
@@ -118,7 +119,7 @@ func drop_loot():
 		loot.set_loot("common")
 	
 	var gold = loot_scene.instantiate()
-	gold.set_loot("gold")
 	gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)
-	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+	get_tree().current_scene.get_node("SortingLayer").add_child(gold)
+	gold.set_loot("gold")
 	$"/root/Global".loot_count += 1
