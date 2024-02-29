@@ -1,16 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bixc4qqvwwkl0"]
+[gd_scene load_steps=3 format=3 uid="uid://bixc4qqvwwkl0"]
 
 [ext_resource type="Script" path="res://scripts/map_generator.gd" id="1_ku30c"]
-[ext_resource type="PackedScene" uid="uid://rb2iki5gjcch" path="res://scenes/creative_camera.tscn" id="2_yqvvg"]
-[ext_resource type="TileSet" uid="uid://w7yhotppmur7" path="res://art/room.tres" id="3_33036"]
+[ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_i08ma"]
 
 [node name="MapGenerator" type="Node2D"]
 script = ExtResource("1_ku30c")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(99.0001, -310)
-scale = Vector2(8.38, 8.38)
-tile_set = ExtResource("3_33036")
+tile_set = ExtResource("2_i08ma")
 format = 2
-
-[node name="Camera2D" parent="." instance=ExtResource("2_yqvvg")]

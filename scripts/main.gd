@@ -35,7 +35,6 @@ func new_game(): #Called by start button
 	
 	goblin_count = 0
 	wave_size = 1
-	spawn_goblins(wave_size)
 
 func spawn_goblins(number):
 	await get_tree().create_timer(2.0).timeout
