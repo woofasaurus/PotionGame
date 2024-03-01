@@ -60,9 +60,7 @@ func _physics_process(_delta):
 func set_animations():
 	sprite.flip_h = direction_to_target.x > 0
 	
-	if not self.spawned:
-		animation.play("spawn")
-	else:
+	if self.spawned:
 		match current_state:
 			"idle":
 				animation.play("idle")
@@ -112,6 +110,11 @@ func _on_aggro_range_area_exited(area):
 		current_state = "attacking"
 		animation.play("idle")
 		flee = false
+
+func _on_pursue_range_area_entered(area):
+	if area.get_name() == "PlayerHitbox":
+		animation.play("spawn")
+
 
 func _on_pursue_range_area_exited(area):
 	if area.get_name() == "PlayerHitbox":
