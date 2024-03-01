@@ -109,3 +109,9 @@
 	
 # 	func iterable():
 # 		return self.queue_array.duplicate()
+
+
+# print("(0, 0) -> ", self.floor_map.map_to_local(Vector2i(0, 0)))
+# 	print("(0, 1) -> ", self.floor_map.map_to_local(Vector2i(0, 1)))
+# 	print("(1, 0) -> ", self.floor_map.map_to_local(Vector2i(1, 0)))
+# 	print(self.floor_map.local_to_map(Vector2(100, 55)))

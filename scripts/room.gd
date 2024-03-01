@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name room
-
 ## The tilemap y-coordinate of the first tile of the entrance.
 @export var entrance_height: int
 ## The tilemap y-coordinate of the first tile of the exit.
