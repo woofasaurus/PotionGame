@@ -52,7 +52,8 @@ func effect(_player):
 		"Potion of Greed":
 			for i in range (2):
 				var loot = load("res://scenes/loot.tscn").instantiate()
-				loot.set_loot("epic")
 				loot.global_position = _player.position
 				_player.get_tree().current_scene.get_node("SortingLayer").add_child(loot)
-		
+				loot.set_loot("epic")
+		"Potion of Elusiveness":
+			_player.get_node("DodgeCooldown").wait_time *= 0.5

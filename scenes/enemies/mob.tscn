@@ -89,7 +89,7 @@ position = Vector2(0, -11.03)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4ko0h")
 
-[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
+[node name="MobHitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
@@ -170,7 +170,6 @@ text = "
 "
 metadata/_edit_use_anchors_ = true
 
-[connection signal="area_entered" from="MobHitbox" to="." method="_on_mob_hurtbox_area_entered"]
 [connection signal="timeout" from="TimeTillHurtbox" to="." method="_on_time_till_hurtbox_timeout"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
 [connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]

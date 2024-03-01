@@ -13,7 +13,7 @@ func set_variables(_scale, _rotation, _speed):
 	speed = _speed
 
 func _on_area_entered(area):
-	if area.is_in_group("mobs"):
+	if area.get_name() == "MobHitbox":
 		area.owner.health -= 50
 
 func _on_death_timer_timeout():

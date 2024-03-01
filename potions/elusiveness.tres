@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://dxh12jpn4jua8"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_kokly"]
+[ext_resource type="Texture2D" uid="uid://dxrcgdw8pqad4" path="res://art/PotionSprites/Potions 0027.png" id="2_iody4"]
+
+[resource]
+script = ExtResource("1_kokly")
+name = "Potion of Elusiveness"
+rarity = "legendary"
+description = "Your dodge cooldown is decreased"
+satiation = 10
+texture = ExtResource("2_iody4")
+color = Color(0.282353, 0.572549, 0.815686, 0.392157)

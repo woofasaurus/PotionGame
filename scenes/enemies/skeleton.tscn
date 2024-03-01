@@ -116,7 +116,7 @@ _data = {
 "walk": SubResource("Animation_rcqnq")
 }
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" groups=["breakable", "mobs"]]
 scale = Vector2(0.35, 0.35)
 collision_layer = 4
 collision_mask = 517
@@ -128,7 +128,7 @@ position = Vector2(0, -58.6)
 scale = Vector2(14.8, 14.8)
 shape = SubResource("CapsuleShape2D_q0lk2")
 
-[node name="MobHitbox" type="Area2D" parent="." groups=["mobs"]]
+[node name="MobHitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 

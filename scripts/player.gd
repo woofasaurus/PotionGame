@@ -40,7 +40,7 @@ var melee_scale = 1
 #endregion
 
 #region Inventory Variables
-var cash = 1000
+var cash = 100000
 #region StartingInventory
 var inventory_wheel_scene= preload("res://scenes/hud/inventory_wheel.tscn")
 var inventory;
@@ -67,7 +67,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#region Thirst Checks
-	#thirst -= delta*2
+	thirst -= delta
 	if thirst > max_thirst:
 		thirst = max_thirst
 	if thirst < 0:
@@ -78,8 +78,9 @@ func _physics_process(delta):
 	
 	#region == Health Checks ==
 	if health <= 0:
-		#dead.emit()
-		#queue_free()
+	#	dead.emit()
+	#	get_tree().call_group("mobs", "queue_free")
+	#	queue_free()
 		pass
 	
 	if health != prev_health:

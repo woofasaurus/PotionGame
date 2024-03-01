@@ -9,8 +9,9 @@ var arrow_fired = false
 var flee = false
 
 func _ready():
-	max_health = 1000;
+	max_health = 300;
 	health = max_health;
+	prev_health = health
 	speed = 300;
 
 func idle():
@@ -39,6 +40,7 @@ func _physics_process(_delta):
 		queue_free()
 	if health != prev_health:
 		$HealthIndicatorPosition/HealthIndicatorText.text = str(health) + " / " + str(max_health)
+		prev_health = health
 	
 	if self.spawned:
 		match current_state:
@@ -147,7 +149,7 @@ func drop_loot():
 	
 	for i in range (3):
 		var gold = loot_scene.instantiate()
+		gold.global_position = position - Vector2(randi()%200 - 100, randi() % 200 - 50)
+		get_tree().current_scene.get_node("SortingLayer").add_child(gold)
 		gold.set_loot("gold")
-		gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)
-		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
 		$"/root/Global".loot_count += 1

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p8v7w"]
 [ext_resource type="PackedScene" uid="uid://bixc4qqvwwkl0" path="res://scenes/map_generator.tscn" id="4_3dory"]
 [ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="4_8w8u7"]
+[ext_resource type="PackedScene" uid="uid://bixc4qqvwwkl0" path="res://scenes/map_generator.tscn" id="4_dviph"]
 [ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]
 
 [node name="Main" type="Node"]
@@ -17,9 +18,16 @@ color = Color(0.0862745, 0.247059, 0.34902, 1)
 y_sort_enabled = true
 
 [node name="PotionSeller" parent="SortingLayer" instance=ExtResource("10_7x5ul")]
-position = Vector2(967, 558)
+position = Vector2(989, 593)
 scale = Vector2(0.34, 0.34)
 
-[node name="MapGenerator" parent="." instance=ExtResource("4_3dory")]
+[node name="MapGenerator" parent="." instance=ExtResource("4_dviph")]
+
+[node name="GoblinTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="GoblinTimer" to="." method="_on_goblin_timer_timeout"]
+
+[editable path="MapGenerator"]

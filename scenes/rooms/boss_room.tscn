@@ -1,8 +1,6 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://cwhk502j41c7v"]
-=======
 [gd_scene load_steps=3 format=3 uid="uid://bwmryy5ve0kfc"]
->>>>>>> Stashed changes
+[gd_scene load_steps=3 format=3 uid="uid://cwhk502j41c7v"]
 
 [ext_resource type="Script" path="res://scripts/rooms/boss_room.gd" id="1_i6pix"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_xm2eg"]

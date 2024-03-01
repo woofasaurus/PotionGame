@@ -23,8 +23,7 @@ func set_variables(_potion_reference, _direction, _velocity):
 	spin = sign(direction.x)*4
 
 func _on_area_entered(area):
-	print(area)
-	if area.is_in_group("mobs"):
+	if area.get_name() == "MobHitbox":
 		area.owner.health -= 100
 		var potion_splat = potion_splat_scene.instantiate()
 		potion_splat.set_color(potion_reference.color)
