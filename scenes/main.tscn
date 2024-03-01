@@ -1,7 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccenq1pij3i58"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p8v7w"]
-[ext_resource type="PackedScene" uid="uid://bixc4qqvwwkl0" path="res://scenes/map_generator.tscn" id="4_3dory"]
 [ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="4_8w8u7"]
 [ext_resource type="PackedScene" uid="uid://bixc4qqvwwkl0" path="res://scenes/map_generator.tscn" id="4_dviph"]
 [ext_resource type="PackedScene" uid="uid://dxt3btryxey3g" path="res://scenes/npcs/potion_seller/potion_seller.tscn" id="10_7x5ul"]

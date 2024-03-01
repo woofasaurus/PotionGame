@@ -116,7 +116,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 
 		room_instance.set_vars()
 		self._spawn_torches(room_instance.torch_positions, coord_offset)
-		self._spawn_enemies(room_instance.enemey_spawn_positions, i, coord_offset)
+		# self._spawn_enemies(room_instance.enemey_spawn_positions, i, coord_offset)
 		# Computes the offset 
 		coord_offset += Vector2i(room_instance.room_width + 1, room_instance.exit_height)
 		
@@ -145,7 +145,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self._preload_rooms(10, 3)
-	self._generate_rooms(range(10), 20, 3, 2)
+	self._generate_rooms(range(10), 1, 3, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

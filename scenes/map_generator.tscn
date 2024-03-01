@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bixc4qqvwwkl0"]
+[gd_scene load_steps=4 format=3 uid="uid://bixc4qqvwwkl0"]
 
 [ext_resource type="Script" path="res://scripts/map_generator.gd" id="1_ku30c"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_i08ma"]
+[ext_resource type="PackedScene" uid="uid://rb2iki5gjcch" path="res://scenes/creative_camera.tscn" id="3_1qrss"]
 
 [node name="MapGenerator" type="Node2D"]
 script = ExtResource("1_ku30c")
@@ -9,3 +10,5 @@ script = ExtResource("1_ku30c")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_i08ma")
 format = 2
+
+[node name="CreativeCam" parent="." instance=ExtResource("3_1qrss")]
