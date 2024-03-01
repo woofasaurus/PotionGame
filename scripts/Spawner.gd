@@ -2,6 +2,7 @@ extends Marker2D
 
 class_name Spawner
 
+# Can also consider making this a class that spawns mobs when the player is near.
 var enemies = [preload("res://scenes/enemies/mob.tscn"),
 			   preload("res://scenes/enemies/skeleton.tscn"),
 			   preload("res://scenes/enemies/necromancer.tscn")]
@@ -35,7 +36,8 @@ func spawn(current_weight, spawn_radius, root_node, global_center, node_path:Str
 	
 	enemy_instance.set_position(global_pos)
 
-	root_node.get_node(node_path).add_child(enemy_instance)
+	root_node.get_node(node_path).add_child.call_deferred(enemy_instance)
+	# root_node.get_node(node_path).add_child(enemy_instance)
 	# print("Spawned ", enemy_instance.get_name(), " at ", enemy_instance.get_global_position())
 	
 	# get_tree().current_scene.get_node("SortingLayer").add_child(enemy_instance)

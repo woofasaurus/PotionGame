@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bixc4qqvwwkl0"]
+[gd_scene load_steps=3 format=3 uid="uid://bixc4qqvwwkl0"]
 
 [ext_resource type="Script" path="res://scripts/map_generator.gd" id="1_ku30c"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_i08ma"]
-[ext_resource type="PackedScene" uid="uid://dwxi2ams24m26" path="res://scenes/player/player.tscn" id="4_p84gu"]
-[ext_resource type="PackedScene" uid="uid://c45vcfgd75wj4" path="res://scenes/hud/hud.tscn" id="5_rkk3x"]
 
 [node name="MapGenerator" type="Node2D"]
 script = ExtResource("1_ku30c")
@@ -11,8 +9,3 @@ script = ExtResource("1_ku30c")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_i08ma")
 format = 2
-
-[node name="Player" parent="." instance=ExtResource("4_p84gu")]
-position = Vector2(318, 370)
-
-[node name="HUD" parent="." instance=ExtResource("5_rkk3x")]

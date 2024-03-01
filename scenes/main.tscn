@@ -28,5 +28,3 @@ autostart = true
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="GoblinTimer" to="." method="_on_goblin_timer_timeout"]
-
-[editable path="MapGenerator"]
