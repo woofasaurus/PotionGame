@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2o261tctyjcl"]
+[gd_scene load_steps=5 format=3 uid="uid://b2o261tctyjcl"]
 
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_6xjbu"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_qgxe1"]
 [ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://scenes/terrain/torch.tscn" id="3_hdqkd"]
+[ext_resource type="PackedScene" uid="uid://cggqpif3ndtlt" path="res://scenes/spawner.tscn" id="4_wrvin"]
 
 [node name="room_001" type="Node2D"]
 script = ExtResource("1_6xjbu")
@@ -23,3 +24,15 @@ position = Vector2(1682, 281)
 
 [node name="Torch3" parent="." instance=ExtResource("3_hdqkd")]
 position = Vector2(2884, 302)
+
+[node name="Spawner" parent="." instance=ExtResource("4_wrvin")]
+position = Vector2(996, 1080)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_wrvin")]
+position = Vector2(2874, 2545)
+
+[node name="Spawner3" parent="." instance=ExtResource("4_wrvin")]
+position = Vector2(889, 2692)
+
+[node name="Spawner4" parent="." instance=ExtResource("4_wrvin")]
+position = Vector2(2795, 1029)

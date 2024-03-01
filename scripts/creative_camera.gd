@@ -29,7 +29,7 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var mouse_pos_string = "{1}, {2}".format({"1" : int(get_global_mouse_position()[0]), "2" : int(get_global_mouse_position()[0])})
+	var mouse_pos_string = "{1}, {2}".format({"1" : int(get_global_mouse_position()[0]), "2" : int(get_global_mouse_position()[1])})
 	var multiplier = 1 # Goes double speed if you hold space
  
 	motion.x = Input.get_axis("move_left", "move_right") 

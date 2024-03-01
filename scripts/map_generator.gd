@@ -7,9 +7,6 @@ var boss_room = preload("res://scenes/rooms/boss_room.tscn")
 var torch  = preload("res://scenes/terrain/torch.tscn")
 
 var room_pool = []
-var enemies = [preload("res://scenes/enemies/mob.tscn"),
-			   preload("res://scenes/enemies/skeleton.tscn"),
-			   preload("res://scenes/enemies/necromancer.tscn")]
 
 var tile_len: int = 0
 
@@ -27,9 +24,21 @@ func _preload_rooms(num_rooms, str_length):
 		# Load must be used for dynamic paths or whatevrr
 		self.room_pool.append(load(new_path))
 
-func _load_room_children(map_offset: Vector2i, children):
+func _spawn_creatures(spawn_points, room_weight, map_offset):
+	while room_weight > 0:
+		for spawner in spawn_points:
+				if room_weight <= 0:
+					break
+
+				var global_center = spawner.get_position() + Vector2(map_offset[0], map_offset[1]) * self.tile_len
+				
+				room_weight -= spawner.spawn(room_weight, 100, self.get_tree().get_current_scene(), global_center)
+
+func _load_room_children(map_offset: Vector2i, children, room_weight: int=0):
+	var spawn_points = []
+
 	for child in children:		
-		if child.get_class() != "TileMap":
+		if child.get_class() != "TileMap" and child.get_class() != "Spawner":
 			child.get_parent().remove_child(child)
 			
 			# Converts it to the coord to the center.
@@ -39,10 +48,10 @@ func _load_room_children(map_offset: Vector2i, children):
 			child.set_position(new_pos)
 
 			self.add_child(child)
+		elif child.get_class() == "Spawner":
+			spawn_points.append(child)
 
-func _spawn_boss():
-	pass
-
+	self._spawn_creatures(spawn_points, room_weight, map_offset)
 
 # Pool range is an array of the room numbers you want to include in the pool. num_rooms is how many rooms you wan tot generate.
 func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, source_id: int):
@@ -70,6 +79,9 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 
 	for i in range(num_rooms):
 		var index_pool = pool_range.duplicate()
+
+		@warning_ignore("integer_division")
+		var floor_weight = clamp(int(i / 3), 1, 10) * 3 
 		
 		# Removes all of the consecutive rooms in the pool that are also in the queue
 		if not my_queue.is_empty():
@@ -92,7 +104,7 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 			self.floor_map.set_cell(0, new_pos, source_id, atlas_coords)
 
 		children = room_instance.get_children()
-		self._load_room_children(coord_offset, children)
+		self._load_room_children(coord_offset, children, floor_weight)
 
 		# Computes the offset 
 		coord_offset += Vector2i(room_instance.room_width + 1, room_instance.exit_height)
