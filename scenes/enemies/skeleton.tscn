@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://4u37vy7swd6f"]
+[gd_scene load_steps=14 format=3 uid="uid://4u37vy7swd6f"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_u66c2"]
 [ext_resource type="Texture2D" uid="uid://cj1grk4l16flk" path="res://art/Enemies/SkeletonFull.png" id="2_cxk32"]
+<<<<<<< Updated upstream
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="3_qqbv3"]
+=======
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0lk2"]
 radius = 9.47568
@@ -182,28 +185,6 @@ position = Vector2(0, -350)
 
 [node name="AttackDuration" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="HealthIndicatorPosition" type="Marker2D" parent="."]
-position = Vector2(0, -550)
-
-[node name="HealthIndicatorText" type="Label" parent="HealthIndicatorPosition"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_qqbv3")
-theme_override_font_sizes/font_size = 32
-text = "
-"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="PursueRange" to="." method="_on_pursue_range_area_entered"]
 [connection signal="area_exited" from="PursueRange" to="." method="_on_pursue_range_area_exited"]

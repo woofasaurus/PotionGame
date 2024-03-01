@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://cr8jbgdcomve7"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://birqgkv0tyfdq"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scripts/rooms/start_room.gd" id="1_ujhgc"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_6ijxq"]
