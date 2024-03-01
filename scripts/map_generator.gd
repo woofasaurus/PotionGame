@@ -11,10 +11,6 @@ var enemies = [preload("res://scenes/enemies/mob.tscn"),
 			   preload("res://scenes/enemies/skeleton.tscn"),
 			   preload("res://scenes/enemies/necromancer.tscn")]
 
-var enemy_weights = {preload("res://scenes/enemies/mob.tscn") : 1, 
-				 preload("res://scenes/enemies/skeleton.tscn") : 2, 
-				 preload("res://scenes/enemies/necromancer.tscn") : 10}
-
 var tile_len: int = 0
 
 func _pad_num(num, length):
@@ -31,36 +27,9 @@ func _preload_rooms(num_rooms, str_length):
 		# Load must be used for dynamic paths or whatevrr
 		self.room_pool.append(load(new_path))
 
-func _spawn_enemies(spawn_pos, room_num: int, coord_offset=Vector2.ZERO):
-	var monster_weight = clamp(int(room_num / 3), 1, 10) * 3
-	var rng = RandomNumberGenerator.new()
-
-	while monster_weight > 0:
-		for pos in spawn_pos:
-			if monster_weight == 0:
-				break
-
-			var spawnable_enemies = []
-
-			for i in range(len(self.enemies)):
-				if enemy_weights[enemies[i]] <= monster_weight:
-					spawnable_enemies.append(self.enemies[i])
-
-			var offset_pos = Vector2i(pos.x + coord_offset.x, pos.y + coord_offset.y)
-			var global_pos = self.floor_map.map_to_local(offset_pos)
-			var rand_num = rng.randi_range(0, len(spawnable_enemies) - 1)
-
-			var enemy_instance = spawnable_enemies[rand_num].instantiate()
-			
-			enemy_instance.position = global_pos
-			get_tree().current_scene.get_node("SortingLayer").add_child(enemy_instance)
-
-			monster_weight -= enemy_weights[spawnable_enemies[rand_num]]
-
 func _load_room_children(map_offset: Vector2i, children):
 	for child in children:		
 		if child.get_class() != "TileMap":
-			print(child.get_class())
 			child.get_parent().remove_child(child)
 			
 			# Converts it to the coord to the center.
@@ -133,21 +102,20 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 		my_queue.push(rand_index)
 
 	# ---------------- BOSS ROOM ------------------------ #
-	# var boss_room_instance = self.boss_room.instantiate()
-	# tile_coords = boss_room_instance.get_node("TileMap").get_used_cells(0)
+	var boss_room_instance = self.boss_room.instantiate()
+	tile_coords = boss_room_instance.get_node("TileMap").get_used_cells(0)
 
-	# coord_offset += Vector2i(0, -boss_room_instance.entrance_height)
+	coord_offset += Vector2i(0, -boss_room_instance.entrance_height)
 		
-	# # Sets all of the tiles in the tile map
-	# for tile_pos in tile_coords:
-	# 	var atlas_coords = boss_room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
-	# 	var new_pos = tile_pos + coord_offset
+	# Sets all of the tiles in the tile map
+	for tile_pos in tile_coords:
+		var atlas_coords = boss_room_instance.get_node("TileMap").get_cell_atlas_coords(0, tile_pos)
+		var new_pos = tile_pos + coord_offset
 
-	# 	self.floor_map.set_cell(0, new_pos, source_id, atlas_coords)
+		self.floor_map.set_cell(0, new_pos, source_id, atlas_coords)
 
-	# boss_room_instance.set_vars()
-	# self._spawn_torches(boss_room_instance.torch_positions)
-	# self._spawn_boss()
+	children = boss_room_instance.get_children()
+	self._load_room_children(coord_offset, children)
 	# ---------------- BOSS ROOM ------------------------ #
 
 # Called when the node enters the scene tree for the first time.
@@ -155,7 +123,7 @@ func _ready():
 	self.tile_len = self.floor_map.map_to_local(Vector2i(1, 0))[0] - self.floor_map.map_to_local(Vector2i(0, 0))[0]
 	
 	self._preload_rooms(10, 3)
-	self._generate_rooms(range(10), 200, 3, 2)
+	self._generate_rooms(range(10), 10, 3, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

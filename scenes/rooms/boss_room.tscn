@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwhk502j41c7v"]
+[gd_scene load_steps=5 format=3 uid="uid://cwhk502j41c7v"]
 
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_kf4ix"]
 [ext_resource type="TileSet" uid="uid://crspbucdclyaa" path="res://art/new_room.tres" id="2_xm2eg"]
 [ext_resource type="PackedScene" uid="uid://dbnb8g53jt1xu" path="res://scenes/terrain/torch.tscn" id="3_5xpdv"]
+[ext_resource type="PackedScene" uid="uid://deqs063c8ujmo" path="res://scenes/enemies/concoctopus.tscn" id="4_tlhos"]
 
 [node name="boss_room" type="Node2D"]
 script = ExtResource("1_kf4ix")
@@ -22,3 +23,6 @@ position = Vector2(2576, -92)
 
 [node name="Torch3" parent="." instance=ExtResource("3_5xpdv")]
 position = Vector2(4612, -81)
+
+[node name="Concoctopus" parent="." instance=ExtResource("4_tlhos")]
+position = Vector2(2772, 1855)
