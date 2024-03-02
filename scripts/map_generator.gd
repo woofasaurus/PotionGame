@@ -32,7 +32,7 @@ func _spawn_creatures(spawn_points, room_weight, map_offset):
 
 				var global_center = spawner.get_position() + Vector2(map_offset[0], map_offset[1]) * self.tile_len
 				
-				room_weight -= spawner.spawn(room_weight, 100, self.get_tree().get_current_scene(), global_center)
+				room_weight -= spawner.spawn(room_weight, 100, self.get_tree().get_current_scene(), global_center, "SortingLayer")
 
 func _load_room_children(map_offset: Vector2i, children, room_weight: int=0):
 	var spawn_points = []
