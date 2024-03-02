@@ -12,7 +12,7 @@ func _ready():
 	max_health = 300;
 	health = max_health;
 	prev_health = health
-	speed = 300;
+	speed = 200;
 
 func idle():
 	velocity = Vector2.ZERO
@@ -133,22 +133,24 @@ func _on_attack_range_area_exited(area):
 		current_state = "pursuing"
 
 func drop_loot():
-	var droproll = randi() % 100
 	
-	var loot
-	loot = loot_scene.instantiate()
-	loot.global_position = position
-	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
-	loot.set_loot("mundane")
-	$"/root/Global".loot_count += 1
-	if droproll < 5:
-		loot.set_loot("epic")
-	elif droproll < 25:
-		loot.set_loot("rare")
-	elif droproll < 50:
-		loot.set_loot("uncommon")
-	if droproll < 75: 
-		loot.set_loot("common")
+	for i in range(3):
+		var droproll = randi() % 100
+		
+		var loot
+		loot = loot_scene.instantiate()
+		loot.global_position = position
+		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+		loot.set_loot("mundane")
+		$"/root/Global".loot_count += 1
+		if droproll < 5:
+			loot.set_loot("epic")
+		elif droproll < 25:
+			loot.set_loot("rare")
+		elif droproll < 50:
+			loot.set_loot("uncommon")
+		if droproll < 75: 
+			loot.set_loot("common")
 	
 	for i in range (3):
 		var gold = loot_scene.instantiate()

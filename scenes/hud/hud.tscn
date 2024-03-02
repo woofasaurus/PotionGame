@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm05u00137q18" path="res://art/WhiteVignette.png" id="2_4xbmj"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="2_pr86w"]
 [ext_resource type="PackedScene" uid="uid://fnxgqjblgq0g" path="res://scenes/health_display.tscn" id="4_du2tw"]
-[ext_resource type="Texture2D" uid="uid://ddffbwefeltqx" path="res://art/HUD/Gold.png" id="4_jk76j"]
-
+[ext_resource type="Texture2D" uid="uid://cr6nbxf3m2266" path="res://art/HUD/Gold.png" id="4_jk76j"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_nwvch"]
 action = &"start_game"
@@ -82,22 +81,6 @@ text = "Start"
 wait_time = 0.5
 one_shot = true
 
-[node name="Inventory" type="Label" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -25.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1, 1.00939)
-theme_override_fonts/font = ExtResource("2_pr86w")
-theme_override_font_sizes/font_size = 20
-text = "Empty"
-horizontal_alignment = 1
-vertical_alignment = 1
-text_overrun_behavior = 3
-
 [node name="GoblinCount" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
@@ -123,24 +106,6 @@ offset_bottom = 398.0
 theme_override_fonts/font = ExtResource("2_pr86w")
 theme_override_font_sizes/font_size = 64
 text = "0"
-
-[node name="InventorySelection" type="Label" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -77.39
-offset_right = 200.0
-offset_bottom = -35.96
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_pr86w")
-theme_override_font_sizes/font_size = 40
-text = "Select"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HealthDisplay" parent="." instance=ExtResource("4_du2tw")]
 position = Vector2(159, 165)

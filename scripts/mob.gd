@@ -18,7 +18,7 @@ var attacking = false
 
 #region stat variables
 @export var speed = 250;
-@export var max_health = 200;
+@export var max_health = 100;
 var health = max_health;
 var prev_health = health;
 #endregion
@@ -102,21 +102,23 @@ func _on_attack_range_area_exited(area):
 		current_state = "pursuing"
 
 func drop_loot():
-	var droproll = randi() % 100
 	
-	var loot
-	if droproll < 75:
+	for i in range (2):
+		var droproll = randi() % 100
+		
+		var loot
 		loot = loot_scene.instantiate()
 		loot.global_position = position
 		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
 		loot.set_loot("mundane")
 		$"/root/Global".loot_count += 1
-	if droproll < 5:
-		loot.set_loot("rare")
-	elif droproll < 25:
-		loot.set_loot("uncommon")
-	elif droproll < 50:
-		loot.set_loot("common")
+		
+		if droproll < 10:
+			loot.set_loot("rare")
+		elif droproll < 20:
+			loot.set_loot("uncommon")
+		elif droproll < 70:
+			loot.set_loot("common")
 	
 	var gold = loot_scene.instantiate()
 	gold.global_position = position - Vector2(randi()%50 - 25, randi() % 25 + 10)

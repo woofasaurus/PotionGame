@@ -134,8 +134,8 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 func _ready():
 	self.tile_len = self.floor_map.map_to_local(Vector2i(1, 0))[0] - self.floor_map.map_to_local(Vector2i(0, 0))[0]
 	
-	self._preload_rooms(10, 3)
-	self._generate_rooms(range(10), 10, 3, 2)
+	self._preload_rooms(11, 3)
+	self._generate_rooms(range(11), 10, 5, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

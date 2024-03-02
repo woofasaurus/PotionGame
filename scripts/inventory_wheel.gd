@@ -37,9 +37,9 @@ func full_update(_inventory, _selection):
 	update_packing(_inventory.size())
 
 func update_packing(_size):
-	radius = 100*_size
-	position.y = 900+radius
-	$SelectionName.position.y = -300-radius
+	radius = 100*_size*scale.x
+	position.y = (1900+radius)*scale.x
+	$SelectionName.position.y = (-300-radius)
 	packing = min(_size, 20)
 	padding = min(2*PI/packing, 2*PI)
 	num_rendered = max(1, min(_size/2, 8))

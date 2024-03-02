@@ -9,7 +9,7 @@ var flee = false
 var facing = Vector2.ZERO
 
 func _ready():
-	max_health = 1000;
+	max_health = 500;
 	health = max_health;
 	speed = 300;
 	prev_health = health
@@ -92,21 +92,23 @@ func _on_attack_range_area_exited(area):
 
 func drop_loot():
 	var droproll = randi() % 100
-	
-	var loot
-	loot = loot_scene.instantiate()
-	loot.global_position = position
-	get_tree().current_scene.get_node("SortingLayer").add_child(loot)
-	loot.set_loot("common")
-	$"/root/Global".loot_count += 1
-	if droproll < 5:
-		loot.set_loot("legendary")
-	elif droproll < 25:
-		loot.set_loot("epic")
-	elif droproll < 50:
-		loot.set_loot("rare")
-	if droproll < 75: 
-		loot.set_loot("uncommon")
+	for i in range (6):
+		droproll = randi() % 100
+		
+		var loot
+		loot = loot_scene.instantiate()
+		loot.global_position = position
+		get_tree().current_scene.get_node("SortingLayer").add_child(loot)
+		loot.set_loot("common")
+		$"/root/Global".loot_count += 1
+		if droproll < 5:
+			loot.set_loot("legendary")
+		elif droproll < 25:
+			loot.set_loot("epic")
+		elif droproll < 50:
+			loot.set_loot("rare")
+		if droproll < 75: 
+			loot.set_loot("uncommon")
 	
 	for i in range (10):
 		var gold = loot_scene.instantiate()

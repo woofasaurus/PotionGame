@@ -15,6 +15,7 @@ offset_right = 20.0
 offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_lyec8")
 
 [node name="SelectionName" type="Label" parent="."]

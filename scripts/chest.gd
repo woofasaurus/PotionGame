@@ -4,6 +4,7 @@ var legendary_select_scene = preload("res://scenes/legendary_select.tscn")
 var popup_scene = preload("res://scenes/hud/popup_text.tscn")
 var in_range = false
 var open = false
+var opened = false
 var used = false
 
 var options
@@ -11,14 +12,16 @@ var options
 func _ready():
 	$PopupText.set_text("[R] to open")
 	$PopupText.hide()
-	options = legendary_select_scene.instantiate()
-	get_tree().current_scene.add_child(options)
-	options.set_variables()
-	options.hide()
-	options.connect('free', set_used)
 
 func _input(event):
 	if event.is_action_pressed("interact") and in_range and not open:
+		if not opened:
+			options = legendary_select_scene.instantiate()
+			get_tree().current_scene.add_child(options)
+			options.set_variables()
+			options.hide()
+			options.connect('free', set_used)
+			opened = true
 		$AnimationPlayer.play("open")
 		open = true
 		options.show()
