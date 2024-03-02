@@ -21,9 +21,6 @@ func new_game(): #Called by start button
 	#Clear existing mobs
 	#get_tree().call_group("mobs", "queue_free") WE ARE NOT ALLOWED TO DELETE THIS LINE. THIS LINE HAS TO SIT HERE AND THINK ABOUT WHAT ITS DONE. FUCK THIS LINE.
 	
-	var concoctopus = concoctopus_scene.instantiate();
-	concoctopus.position = Vector2(20000,500)
-	$SortingLayer.add_child(concoctopus)
 	#Spawn player
 	player = player_scene.instantiate();
 	player.position = Vector2(500,500)
