@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_vnduc"]
 [ext_resource type="Texture2D" uid="uid://dm05u00137q18" path="res://art/WhiteVignette.png" id="2_4xbmj"]
 [ext_resource type="FontFile" uid="uid://cf53ykfeqwnk3" path="res://fonts/Xolonium-Regular.ttf" id="2_pr86w"]
-[ext_resource type="PackedScene" uid="uid://fnxgqjblgq0g" path="res://health_display.tscn" id="4_du2tw"]
-[ext_resource type="Texture2D" uid="uid://cr6nbxf3m2266" path="res://art/HUD/Gold.png" id="4_jk76j"]
+[ext_resource type="PackedScene" uid="uid://fnxgqjblgq0g" path="res://scenes/health_display.tscn" id="4_du2tw"]
+[ext_resource type="Texture2D" uid="uid://ddffbwefeltqx" path="res://art/HUD/Gold.png" id="4_jk76j"]
+
 
 [sub_resource type="InputEventAction" id="InputEventAction_nwvch"]
 action = &"start_game"
