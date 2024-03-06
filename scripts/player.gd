@@ -182,7 +182,7 @@ func drink_potion():
 	var _drink_ref = inventory.pop_drink()
 	thirst += _drink_ref.satiation 
 	metabolizing.push_back(_drink_ref)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(180.0).timeout
 	metabolizing.pop_front().effect(self)
 #endregion
 

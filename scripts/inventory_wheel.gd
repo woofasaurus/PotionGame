@@ -111,9 +111,9 @@ func _process(delta):
 func _input(event): #handles scrolling through inventory
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			wheel_rotation += padding
+			wheel_rotation += padding * .25
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			wheel_rotation -= padding
+			wheel_rotation -= padding * .25
 	if event is InputEventPanGesture:
 		stopped = false
 		if (abs(event.delta.y) > threshold):

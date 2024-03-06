@@ -15,6 +15,7 @@ var wave_size = 1
 func game_over(): #Called when player is dead
 	$HUD.show_game_over()
 	get_tree().call_group("mobs", "queue_free")
+	self.get_tree().call_deferred("reload_current_scene")
 
 func new_game(): #Called by start button
 	$HUD.show_message("Get Ready")

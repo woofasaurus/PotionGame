@@ -32,7 +32,8 @@ func _spawn_creatures(spawn_points, room_weight, map_offset):
 
 				var global_center = spawner.get_position() + Vector2(map_offset[0], map_offset[1]) * self.tile_len
 				
-				room_weight -= spawner.spawn(room_weight, 100, self.get_tree().get_current_scene(), global_center, "SortingLayer")
+				room_weight -= spawner.spawn(room_weight, 100, self.get_tree().get_current_scene(), global_center)#, "SortingLayer")
+
 
 func _load_room_children(map_offset: Vector2i, children, room_weight: int=0):
 	var spawn_points = []
@@ -134,9 +135,8 @@ func _generate_rooms(pool_range: Array, num_rooms: int, max_consecutive: int, so
 func _ready():
 	self.tile_len = self.floor_map.map_to_local(Vector2i(1, 0))[0] - self.floor_map.map_to_local(Vector2i(0, 0))[0]
 	
-	self._preload_rooms(11, 3)
-	self._generate_rooms(range(11), 10, 5, 2)
-
+	self._preload_rooms(10, 3)
+	self._generate_rooms(range(10), 10, 3, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
